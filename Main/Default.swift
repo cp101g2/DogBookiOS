@@ -17,7 +17,8 @@ let ArticleServlet = HOST_URL + "ArticleServlet"
 let SocketUrl = "ws://127.0.0.1:8080/DogBookServlet/ChatWebSocketServer/"
 
 let SIGN_IN = "signIn"
-
+let SIGN_OUT = "signOut"
+let SIGN_UP = "signUp"
 let INSERT = "insert";
 let SELECT = "select";
 let GET_DOG_INFO = "getDogInfo";

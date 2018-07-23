@@ -18,6 +18,7 @@ class MyDogCollectionViewController: UICollectionViewController {
     private let cropper = UIImageCropper(cropRatio: 16/9)
 
     var isLogin : Bool = false
+    var dogId = -1
     var dog : Dog?
     var myArticles : [Article] = []
     var profileImage : UIImage?
@@ -32,15 +33,15 @@ class MyDogCollectionViewController: UICollectionViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         isLogin = UserDefaults.standard.bool(forKey: "isLogin")
-        
+        dogId = UserDefaults.standard.integer(forKey: "dogId")
         if !isLogin{
             //跳至登入頁面
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard = UIStoryboard(name: "MyDogStoryboard", bundle: nil)
             
             if let controller = storyboard.instantiateViewController(withIdentifier: LOGIN_PAGE) as? LoginViewController {
                 present(controller, animated: true)
             }
-        } else {
+        } else if isLogin , dogId != -1{
             let id = UserDefaults.standard.integer(forKey: "dogId")
             getMyDog()
             getDogImage()
@@ -50,6 +51,7 @@ class MyDogCollectionViewController: UICollectionViewController {
         }
     }
 
+    @IBAction func unwindSegue(_ sender: UIStoryboardSegue){}
     
     // MARK: UICollectionViewDataSource
 
@@ -61,12 +63,15 @@ class MyDogCollectionViewController: UICollectionViewController {
         
         let setBackground = UITapGestureRecognizer(target: self, action: #selector(choseBackgroundImage))
         
-        header.setBackgroundImage.addGestureRecognizer(setBackground)
-        header.profileImageView.addGestureRecognizer(tap)
-        header.profileImageView.image = profileImage
-        header.backgroundImageView.image = backgroundImage
-        header.infoLabel.text = dogInfo
         
+        header.profileImageView.addGestureRecognizer(tap)
+        
+        if isLogin ,dogId != -1{
+            header.setBackgroundImage.addGestureRecognizer(setBackground)
+            header.profileImageView.image = profileImage
+            header.backgroundImageView.image = backgroundImage
+            header.infoLabel.text = dogInfo
+        }
         
         return header
     }
@@ -95,12 +100,22 @@ class MyDogCollectionViewController: UICollectionViewController {
     
     @objc
     func showInfo(){
-        if isLogin {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let dogId = UserDefaults.standard.integer(forKey: "dogId")
+        if isLogin , dogId != -1{
+            let storyboard = UIStoryboard(name: "MyDogStoryboard", bundle: nil)
             
             if let controller = storyboard.instantiateViewController(withIdentifier: "Info") as? InfoViewController {
+                
+                controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+                controller.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                controller.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                
+                
                 present(controller, animated: true)
             }
+            
+        } else {
+            print("will add dog")
         }
         
     }

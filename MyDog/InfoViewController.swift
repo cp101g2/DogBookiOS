@@ -14,15 +14,17 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var infoLable: UILabel!
-    @IBOutlet var infoView: UIView!
+    @IBOutlet weak var closeImageView: UIImageView!
+    @IBOutlet weak var infoView: UIView!
     
     let communicator = Communicator()
-    let tap = UITapGestureRecognizer(target: self, action: #selector(dismissInfo))
+   
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        infoView.addGestureRecognizer(tap)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissInfo))
+        closeImageView.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
     }
     
@@ -33,7 +35,6 @@ class InfoViewController: UIViewController {
     }
     
     @IBAction func signOutBtnPressed(_ sender: Any) {
-        
         UserDefaults.standard.set(false, forKey: "isLogin")
         UserDefaults.standard.set(-1, forKey: "dogId")
         UserDefaults.standard.set(-1, forKey: "ownerId")
@@ -43,8 +44,7 @@ class InfoViewController: UIViewController {
     
     @objc
     func dismissInfo(){
-        print("hello")
-//        self.dismiss(animated: true)
+        dismiss(animated: true)
     }
     
     func getMyDog(){
@@ -64,12 +64,9 @@ class InfoViewController: UIViewController {
                 assertionFailure("get data fail")
                 return
             }
-            
             guard let output = try? JSONDecoder().decode(Dog.self, from: result) else {
                 return
             }
-            
-            
             guard let name = output.name else {
                 return
             }
@@ -92,7 +89,6 @@ class InfoViewController: UIViewController {
                 assertionFailure("get data fail")
                 return
             }
-            
             guard let image = UIImage.init(data: result) else {
                 return
             }

@@ -10,6 +10,10 @@
 		DE4DD08D210322FE00DE8587 /* UIImageCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DD08B210322FE00DE8587 /* UIImageCropper.swift */; };
 		DE4DD08E210322FE00DE8587 /* UIImage+FixOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DD08C210322FE00DE8587 /* UIImage+FixOrientation.swift */; };
 		DE4DD09021034E2500DE8587 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DD08F21034E2500DE8587 /* InfoViewController.swift */; };
+		DE4DD09221042C1E00DE8587 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DD09121042C1E00DE8587 /* SignUpViewController.swift */; };
+		DE4DD09B2105A1AF00DE8587 /* MyDogStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4DD09A2105A1AF00DE8587 /* MyDogStoryboard.storyboard */; };
+		DE4DD09F2105A35F00DE8587 /* ArticleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4DD09E2105A35F00DE8587 /* ArticleStoryboard.storyboard */; };
+		DE4DD0A12105A36900DE8587 /* ChatStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4DD0A02105A36900DE8587 /* ChatStoryboard.storyboard */; };
 		DE60810B20FD9D7600FA16C1 /* Communicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60810A20FD9D7600FA16C1 /* Communicator.swift */; };
 		DE60810D20FD9DD000FA16C1 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60810C20FD9DD000FA16C1 /* Action.swift */; };
 		DE60811120FD9E7200FA16C1 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60811020FD9E7200FA16C1 /* DataModel.swift */; };
@@ -30,6 +34,10 @@
 		DE4DD08B210322FE00DE8587 /* UIImageCropper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageCropper.swift; sourceTree = "<group>"; };
 		DE4DD08C210322FE00DE8587 /* UIImage+FixOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+FixOrientation.swift"; sourceTree = "<group>"; };
 		DE4DD08F21034E2500DE8587 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		DE4DD09121042C1E00DE8587 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		DE4DD09A2105A1AF00DE8587 /* MyDogStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyDogStoryboard.storyboard; sourceTree = "<group>"; };
+		DE4DD09E2105A35F00DE8587 /* ArticleStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArticleStoryboard.storyboard; sourceTree = "<group>"; };
+		DE4DD0A02105A36900DE8587 /* ChatStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatStoryboard.storyboard; sourceTree = "<group>"; };
 		DE60810A20FD9D7600FA16C1 /* Communicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Communicator.swift; sourceTree = "<group>"; };
 		DE60810C20FD9DD000FA16C1 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		DE60811020FD9E7200FA16C1 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
@@ -59,9 +67,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE4DD09521059F4700DE8587 /* MyDog */ = {
+			isa = PBXGroup;
+			children = (
+				DE60811820FDC79400FA16C1 /* MyDogCollectionViewController.swift */,
+				DE60811C20FDC94D00FA16C1 /* MyDogImageCollectionViewCell.swift */,
+				DED8DF5C2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift */,
+				DE4DD08F21034E2500DE8587 /* InfoViewController.swift */,
+				DE4DD09A2105A1AF00DE8587 /* MyDogStoryboard.storyboard */,
+			);
+			path = MyDog;
+			sourceTree = "<group>";
+		};
+		DE4DD09721059F6800DE8587 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DE60811420FDA06700FA16C1 /* LoginViewController.swift */,
+				DE4DD09121042C1E00DE8587 /* SignUpViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		DE4DD09821059F8300DE8587 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				DE4DD08B210322FE00DE8587 /* UIImageCropper.swift */,
+				DE4DD08C210322FE00DE8587 /* UIImage+FixOrientation.swift */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		DE4DD09921059FA300DE8587 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DE60810A20FD9D7600FA16C1 /* Communicator.swift */,
+				DE60811220FD9EC900FA16C1 /* Default.swift */,
+				DE60811020FD9E7200FA16C1 /* DataModel.swift */,
+				DE60810C20FD9DD000FA16C1 /* Action.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		DE4DD09C2105A33B00DE8587 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				DE4DD0A02105A36900DE8587 /* ChatStoryboard.storyboard */,
+			);
+			path = "C\bhat";
+			sourceTree = "<group>";
+		};
+		DE4DD09D2105A34400DE8587 /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				DE4DD09E2105A35F00DE8587 /* ArticleStoryboard.storyboard */,
+			);
+			path = Article;
+			sourceTree = "<group>";
+		};
 		DE6D4F4920EF3695003ECCC6 = {
 			isa = PBXGroup;
 			children = (
+				DE4DD09D2105A34400DE8587 /* Article */,
+				DE4DD09C2105A33B00DE8587 /* Chat */,
+				DE4DD09921059FA300DE8587 /* Main */,
+				DE4DD09821059F8300DE8587 /* Media */,
+				DE4DD09721059F6800DE8587 /* Login */,
+				DE4DD09521059F4700DE8587 /* MyDog */,
 				DE6D4F5420EF3695003ECCC6 /* DogBook */,
 				DE6D4F5320EF3695003ECCC6 /* Products */,
 			);
@@ -80,22 +151,11 @@
 			children = (
 				DEF02C9D20FF597F0013DB8D /* dog02.jpg */,
 				DE6D4F5520EF3695003ECCC6 /* AppDelegate.swift */,
-				DE60810A20FD9D7600FA16C1 /* Communicator.swift */,
 				DE6D4F5720EF3695003ECCC6 /* ViewController.swift */,
 				DE6D4F5920EF3695003ECCC6 /* Main.storyboard */,
 				DE6D4F5C20EF3696003ECCC6 /* Assets.xcassets */,
 				DE6D4F5E20EF3696003ECCC6 /* LaunchScreen.storyboard */,
 				DE6D4F6120EF3696003ECCC6 /* Info.plist */,
-				DE4DD08B210322FE00DE8587 /* UIImageCropper.swift */,
-				DE4DD08C210322FE00DE8587 /* UIImage+FixOrientation.swift */,
-				DE60810C20FD9DD000FA16C1 /* Action.swift */,
-				DE60811020FD9E7200FA16C1 /* DataModel.swift */,
-				DE60811220FD9EC900FA16C1 /* Default.swift */,
-				DE60811420FDA06700FA16C1 /* LoginViewController.swift */,
-				DE60811820FDC79400FA16C1 /* MyDogCollectionViewController.swift */,
-				DE60811C20FDC94D00FA16C1 /* MyDogImageCollectionViewCell.swift */,
-				DED8DF5C2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift */,
-				DE4DD08F21034E2500DE8587 /* InfoViewController.swift */,
 			);
 			path = DogBook;
 			sourceTree = "<group>";
@@ -160,8 +220,11 @@
 			files = (
 				DEF02C9E20FF597F0013DB8D /* dog02.jpg in Resources */,
 				DE6D4F6020EF3696003ECCC6 /* LaunchScreen.storyboard in Resources */,
+				DE4DD09F2105A35F00DE8587 /* ArticleStoryboard.storyboard in Resources */,
 				DE6D4F5D20EF3696003ECCC6 /* Assets.xcassets in Resources */,
 				DE6D4F5B20EF3695003ECCC6 /* Main.storyboard in Resources */,
+				DE4DD09B2105A1AF00DE8587 /* MyDogStoryboard.storyboard in Resources */,
+				DE4DD0A12105A36900DE8587 /* ChatStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +243,7 @@
 				DE60810D20FD9DD000FA16C1 /* Action.swift in Sources */,
 				DE4DD08E210322FE00DE8587 /* UIImage+FixOrientation.swift in Sources */,
 				DED8DF5D2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift in Sources */,
+				DE4DD09221042C1E00DE8587 /* SignUpViewController.swift in Sources */,
 				DE6D4F5820EF3695003ECCC6 /* ViewController.swift in Sources */,
 				DE4DD09021034E2500DE8587 /* InfoViewController.swift in Sources */,
 				DE6D4F5620EF3695003ECCC6 /* AppDelegate.swift in Sources */,

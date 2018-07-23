@@ -87,6 +87,7 @@ class Communicator {
                   status : String,
                   kind : String,
                   dataHandler : @escaping DataHandler){
+        
         // 將要送出的 data 轉為 jsonString
         let jsonString = String(data: data, encoding: .utf8)
         
