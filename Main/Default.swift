@@ -14,6 +14,7 @@ let DogServlet = HOST_URL + "DogServlet"
 let ChatServlet = HOST_URL + "ChatServlet"
 let MediaServlet = HOST_URL + "MediaServlet"
 let ArticleServlet = HOST_URL + "ArticleServlet"
+let FriendServlet = HOST_URL + "FriendServlet"  //Jimmy
 let SocketUrl = "ws://127.0.0.1:8080/DogBookServlet/ChatWebSocketServer/"
 
 let SIGN_IN = "signIn"
@@ -46,8 +47,8 @@ let GET_EVENTS = "getEvents";
 let ADD_EVENT = "addEvent";
 let GET_MESSAGE_BOARD = "getMessageBoard";
 let SEND_MESSAGE = "sendMessage";
-
-
+let GET_FRIEND_INFO = "getAll";
+let GET_All_Dog = "getAllDog"
 
 
 

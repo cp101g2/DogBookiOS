@@ -40,3 +40,16 @@ struct GetMedia : Codable {
     var mediaId : Int
     var imageSize : Int
 }
+
+//////
+
+struct GetMyFriendList : Codable {
+    var action: String?
+    var dogId: Int
+}
+
+struct GetAllDog: Codable {
+    var status: String?
+    var dog: Dog
+    
+}
