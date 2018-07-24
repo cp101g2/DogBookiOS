@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18FD86332106F7270040441F /* FriendStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FD86322106F7270040441F /* FriendStoryboard.storyboard */; };
+		18FD86362106F9FB0040441F /* FriendPageSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD86352106F9FB0040441F /* FriendPageSwitchViewController.swift */; };
+		18FD86382106FB520040441F /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD86372106FB520040441F /* FriendListViewController.swift */; };
+		18FD863B2106FD110040441F /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD863A2106FD110040441F /* FriendListTableViewCell.swift */; };
+		18FD863D210711BA0040441F /* FriendSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD863C210711BA0040441F /* FriendSearchViewController.swift */; };
+		18FD863F210711D70040441F /* FriendSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD863E210711D70040441F /* FriendSearchTableViewCell.swift */; };
 		DE4DD08D210322FE00DE8587 /* UIImageCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DD08B210322FE00DE8587 /* UIImageCropper.swift */; };
 		DE4DD08E210322FE00DE8587 /* UIImage+FixOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DD08C210322FE00DE8587 /* UIImage+FixOrientation.swift */; };
 		DE4DD09021034E2500DE8587 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DD08F21034E2500DE8587 /* InfoViewController.swift */; };
@@ -34,6 +40,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18FD86322106F7270040441F /* FriendStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendStoryboard.storyboard; sourceTree = "<group>"; };
+		18FD86352106F9FB0040441F /* FriendPageSwitchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPageSwitchViewController.swift; sourceTree = "<group>"; };
+		18FD86372106FB520040441F /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
+		18FD863A2106FD110040441F /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
+		18FD863C210711BA0040441F /* FriendSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchViewController.swift; sourceTree = "<group>"; };
+		18FD863E210711D70040441F /* FriendSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchTableViewCell.swift; sourceTree = "<group>"; };
 		DE4DD08B210322FE00DE8587 /* UIImageCropper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageCropper.swift; sourceTree = "<group>"; };
 		DE4DD08C210322FE00DE8587 /* UIImage+FixOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+FixOrientation.swift"; sourceTree = "<group>"; };
 		DE4DD08F21034E2500DE8587 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +85,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18FD86392106FB600040441F /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				18FD86322106F7270040441F /* FriendStoryboard.storyboard */,
+				18FD86352106F9FB0040441F /* FriendPageSwitchViewController.swift */,
+				18FD86372106FB520040441F /* FriendListViewController.swift */,
+				18FD863E210711D70040441F /* FriendSearchTableViewCell.swift */,
+				18FD863C210711BA0040441F /* FriendSearchViewController.swift */,
+				18FD863A2106FD110040441F /* FriendListTableViewCell.swift */,
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
 		DE4DD09521059F4700DE8587 /* MyDog */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +161,7 @@
 		DE6D4F4920EF3695003ECCC6 = {
 			isa = PBXGroup;
 			children = (
+				18FD86392106FB600040441F /* Friend */,
 				DE4DD09D2105A34400DE8587 /* Article */,
 				DE4DD09C2105A33B00DE8587 /* Chat */,
 				DE4DD09921059FA300DE8587 /* Main */,
@@ -245,7 +271,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18FD86362106F9FB0040441F /* FriendPageSwitchViewController.swift in Sources */,
 				DE60811520FDA06700FA16C1 /* LoginViewController.swift in Sources */,
+				18FD863F210711D70040441F /* FriendSearchTableViewCell.swift in Sources */,
 				DE60810B20FD9D7600FA16C1 /* Communicator.swift in Sources */,
 				DE60811320FD9EC900FA16C1 /* Default.swift in Sources */,
 				DE60811920FDC79400FA16C1 /* MyDogCollectionViewController.swift in Sources */,
@@ -253,10 +281,13 @@
 				DE60810D20FD9DD000FA16C1 /* Action.swift in Sources */,
 				DE4DD0A82105EC4700DE8587 /* Media.swift in Sources */,
 				DE4DD08E210322FE00DE8587 /* UIImage+FixOrientation.swift in Sources */,
+				18FD863B2106FD110040441F /* FriendListTableViewCell.swift in Sources */,
 				DED8DF5D2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift in Sources */,
+				18FD863D210711BA0040441F /* FriendSearchViewController.swift in Sources */,
 				DE4DD09221042C1E00DE8587 /* SignUpViewController.swift in Sources */,
 				DE6D4F5820EF3695003ECCC6 /* ViewController.swift in Sources */,
 				DE4DD09021034E2500DE8587 /* InfoViewController.swift in Sources */,
+				18FD86382106FB520040441F /* FriendListViewController.swift in Sources */,
 				DE6D4F5620EF3695003ECCC6 /* AppDelegate.swift in Sources */,
 				DE60811120FD9E7200FA16C1 /* DataModel.swift in Sources */,
 				DE4DD0A52105ACD800DE8587 /* AddDogViewController.swift in Sources */,
