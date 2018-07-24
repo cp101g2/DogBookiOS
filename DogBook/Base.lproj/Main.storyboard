@@ -62,7 +62,6 @@
         <!--我的狗-->
         <scene sceneID="vHi-9D-dC0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="weO-yO-nmQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o0z-hf-LDb" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的狗" id="Z22-rI-5av"/>
                     <toolbarItems/>
@@ -75,6 +74,7 @@
                         <segue destination="IuC-9Q-84e" kind="relationship" relationship="rootViewController" id="WIP-Wi-j0a"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="weO-yO-nmQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2430" y="-551"/>
         </scene>
@@ -128,12 +128,22 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="yVG-EJ-heN" kind="relationship" relationship="rootViewController" id="toq-kT-Zgz"/>
+                        <segue destination="7RC-Mx-L4p" kind="relationship" relationship="rootViewController" id="5X4-8R-wy1"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mdo-yH-fGj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2462" y="1633"/>
+        </scene>
+        <!--Friend-->
+        <scene sceneID="Zea-9F-Xqf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FriendStoryboard" referencedIdentifier="Friend" id="7RC-Mx-L4p" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ABi-pd-47t"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gMT-qt-LDC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3343" y="1640"/>
         </scene>
     </scenes>
     <resources>

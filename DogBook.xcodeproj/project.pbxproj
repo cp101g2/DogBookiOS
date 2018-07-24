@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18FD86332106F7270040441F /* FriendStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FD86322106F7270040441F /* FriendStoryboard.storyboard */; };
 		18FD86362106F9FB0040441F /* FriendPageSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD86352106F9FB0040441F /* FriendPageSwitchViewController.swift */; };
 		18FD86382106FB520040441F /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD86372106FB520040441F /* FriendListViewController.swift */; };
 		18FD863B2106FD110040441F /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD863A2106FD110040441F /* FriendListTableViewCell.swift */; };
@@ -36,11 +35,11 @@
 		DE6D4F5D20EF3696003ECCC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE6D4F5C20EF3696003ECCC6 /* Assets.xcassets */; };
 		DE6D4F6020EF3696003ECCC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE6D4F5E20EF3696003ECCC6 /* LaunchScreen.storyboard */; };
 		DED8DF5D2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8DF5C2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift */; };
+		DEEAA714210728980010B0BE /* FriendStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEEAA713210728980010B0BE /* FriendStoryboard.storyboard */; };
 		DEF02C9E20FF597F0013DB8D /* dog02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DEF02C9D20FF597F0013DB8D /* dog02.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		18FD86322106F7270040441F /* FriendStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendStoryboard.storyboard; sourceTree = "<group>"; };
 		18FD86352106F9FB0040441F /* FriendPageSwitchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPageSwitchViewController.swift; sourceTree = "<group>"; };
 		18FD86372106FB520040441F /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		18FD863A2106FD110040441F /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
@@ -71,6 +70,7 @@
 		DE6D4F5F20EF3696003ECCC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE6D4F6120EF3696003ECCC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DED8DF5C2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDogInfoCollectionReusableView.swift; sourceTree = "<group>"; };
+		DEEAA713210728980010B0BE /* FriendStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendStoryboard.storyboard; sourceTree = "<group>"; };
 		DEF02C9D20FF597F0013DB8D /* dog02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dog02.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,12 +88,12 @@
 		18FD86392106FB600040441F /* Friend */ = {
 			isa = PBXGroup;
 			children = (
-				18FD86322106F7270040441F /* FriendStoryboard.storyboard */,
 				18FD86352106F9FB0040441F /* FriendPageSwitchViewController.swift */,
 				18FD86372106FB520040441F /* FriendListViewController.swift */,
 				18FD863E210711D70040441F /* FriendSearchTableViewCell.swift */,
 				18FD863C210711BA0040441F /* FriendSearchViewController.swift */,
 				18FD863A2106FD110040441F /* FriendListTableViewCell.swift */,
+				DEEAA713210728980010B0BE /* FriendStoryboard.storyboard */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -257,6 +257,7 @@
 				DE6D4F6020EF3696003ECCC6 /* LaunchScreen.storyboard in Resources */,
 				DE4DD09F2105A35F00DE8587 /* ArticleStoryboard.storyboard in Resources */,
 				DE4DD0A32105A8AD00DE8587 /* LoginStoryboard.storyboard in Resources */,
+				DEEAA714210728980010B0BE /* FriendStoryboard.storyboard in Resources */,
 				DE6D4F5D20EF3696003ECCC6 /* Assets.xcassets in Resources */,
 				DE6D4F5B20EF3695003ECCC6 /* Main.storyboard in Resources */,
 				DE4DD09B2105A1AF00DE8587 /* MyDogStoryboard.storyboard in Resources */,

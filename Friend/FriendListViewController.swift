@@ -215,10 +215,6 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
             return
         }
         
-        communicator.doPost(url: <#T##String#>, data: data, status: GET_DOG_INFO, kind: "dog") { (<#Data?#>) in
-            <#code#>
-        }
-        
         
         // 準備將資料轉為JSON
         let encoder = JSONEncoder()
