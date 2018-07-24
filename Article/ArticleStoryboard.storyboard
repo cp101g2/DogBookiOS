@@ -56,11 +56,16 @@
                             <outlet property="delegate" destination="WpN-cN-2Iv" id="3nV-cB-rbm"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="文章" id="S5d-Kl-w8N"/>
+                    <navigationItem key="navigationItem" title="文章" id="S5d-Kl-w8N">
+                        <barButtonItem key="rightBarButtonItem" image="add_a_photo_black" id="ze8-Bh-f5o"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="htA-u9-rR6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2990" y="1071"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="add_a_photo_black" width="48" height="48"/>
+    </resources>
 </document>

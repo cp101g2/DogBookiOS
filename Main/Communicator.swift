@@ -80,6 +80,7 @@ class Communicator {
         }
         task.resume()
     }
+
     
     // 可用帶入的 status,kind 制成 字典後送出
     func doPost(url : String,

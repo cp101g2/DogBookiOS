@@ -14,6 +14,9 @@
 		DE4DD09B2105A1AF00DE8587 /* MyDogStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4DD09A2105A1AF00DE8587 /* MyDogStoryboard.storyboard */; };
 		DE4DD09F2105A35F00DE8587 /* ArticleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4DD09E2105A35F00DE8587 /* ArticleStoryboard.storyboard */; };
 		DE4DD0A12105A36900DE8587 /* ChatStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4DD0A02105A36900DE8587 /* ChatStoryboard.storyboard */; };
+		DE4DD0A32105A8AD00DE8587 /* LoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE4DD0A22105A8AD00DE8587 /* LoginStoryboard.storyboard */; };
+		DE4DD0A52105ACD800DE8587 /* AddDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DD0A42105ACD800DE8587 /* AddDogViewController.swift */; };
+		DE4DD0A82105EC4700DE8587 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DD0A72105EC4700DE8587 /* Media.swift */; };
 		DE60810B20FD9D7600FA16C1 /* Communicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60810A20FD9D7600FA16C1 /* Communicator.swift */; };
 		DE60810D20FD9DD000FA16C1 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60810C20FD9DD000FA16C1 /* Action.swift */; };
 		DE60811120FD9E7200FA16C1 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE60811020FD9E7200FA16C1 /* DataModel.swift */; };
@@ -38,6 +41,9 @@
 		DE4DD09A2105A1AF00DE8587 /* MyDogStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyDogStoryboard.storyboard; sourceTree = "<group>"; };
 		DE4DD09E2105A35F00DE8587 /* ArticleStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArticleStoryboard.storyboard; sourceTree = "<group>"; };
 		DE4DD0A02105A36900DE8587 /* ChatStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatStoryboard.storyboard; sourceTree = "<group>"; };
+		DE4DD0A22105A8AD00DE8587 /* LoginStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginStoryboard.storyboard; sourceTree = "<group>"; };
+		DE4DD0A42105ACD800DE8587 /* AddDogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDogViewController.swift; sourceTree = "<group>"; };
+		DE4DD0A72105EC4700DE8587 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		DE60810A20FD9D7600FA16C1 /* Communicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Communicator.swift; sourceTree = "<group>"; };
 		DE60810C20FD9DD000FA16C1 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		DE60811020FD9E7200FA16C1 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
@@ -75,6 +81,7 @@
 				DED8DF5C2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift */,
 				DE4DD08F21034E2500DE8587 /* InfoViewController.swift */,
 				DE4DD09A2105A1AF00DE8587 /* MyDogStoryboard.storyboard */,
+				DE4DD0A42105ACD800DE8587 /* AddDogViewController.swift */,
 			);
 			path = MyDog;
 			sourceTree = "<group>";
@@ -84,6 +91,7 @@
 			children = (
 				DE60811420FDA06700FA16C1 /* LoginViewController.swift */,
 				DE4DD09121042C1E00DE8587 /* SignUpViewController.swift */,
+				DE4DD0A22105A8AD00DE8587 /* LoginStoryboard.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -93,6 +101,7 @@
 			children = (
 				DE4DD08B210322FE00DE8587 /* UIImageCropper.swift */,
 				DE4DD08C210322FE00DE8587 /* UIImage+FixOrientation.swift */,
+				DE4DD0A72105EC4700DE8587 /* Media.swift */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -221,6 +230,7 @@
 				DEF02C9E20FF597F0013DB8D /* dog02.jpg in Resources */,
 				DE6D4F6020EF3696003ECCC6 /* LaunchScreen.storyboard in Resources */,
 				DE4DD09F2105A35F00DE8587 /* ArticleStoryboard.storyboard in Resources */,
+				DE4DD0A32105A8AD00DE8587 /* LoginStoryboard.storyboard in Resources */,
 				DE6D4F5D20EF3696003ECCC6 /* Assets.xcassets in Resources */,
 				DE6D4F5B20EF3695003ECCC6 /* Main.storyboard in Resources */,
 				DE4DD09B2105A1AF00DE8587 /* MyDogStoryboard.storyboard in Resources */,
@@ -241,6 +251,7 @@
 				DE60811920FDC79400FA16C1 /* MyDogCollectionViewController.swift in Sources */,
 				DE4DD08D210322FE00DE8587 /* UIImageCropper.swift in Sources */,
 				DE60810D20FD9DD000FA16C1 /* Action.swift in Sources */,
+				DE4DD0A82105EC4700DE8587 /* Media.swift in Sources */,
 				DE4DD08E210322FE00DE8587 /* UIImage+FixOrientation.swift in Sources */,
 				DED8DF5D2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift in Sources */,
 				DE4DD09221042C1E00DE8587 /* SignUpViewController.swift in Sources */,
@@ -248,6 +259,7 @@
 				DE4DD09021034E2500DE8587 /* InfoViewController.swift in Sources */,
 				DE6D4F5620EF3695003ECCC6 /* AppDelegate.swift in Sources */,
 				DE60811120FD9E7200FA16C1 /* DataModel.swift in Sources */,
+				DE4DD0A52105ACD800DE8587 /* AddDogViewController.swift in Sources */,
 				DE60811D20FDC94D00FA16C1 /* MyDogImageCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

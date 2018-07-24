@@ -22,9 +22,9 @@ class LoginViewController: UIViewController {
 
     
     @IBAction func LoginBtnPressed(_ sender: UIButton) {
+        
         // 從TaxtField取得資料
-        guard let email = emailInputText.text,let password = passwordInputText.text else {
-            assertionFailure("inputEmail's is nil")
+        guard let email = emailInputText.text,email != "",let password = passwordInputText.text,password != "" else {
             return
         }
         
@@ -49,7 +49,6 @@ class LoginViewController: UIViewController {
             UserDefaults.standard.set(output.isLogin, forKey: "isLogin")
             UserDefaults.standard.set(output.ownerId, forKey: "ownerId")
             UserDefaults.standard.set(output.dogId, forKey: "dogId")
-            
             
             if UserDefaults.standard.bool(forKey: "isLogin") {
                 self.dismiss(animated: true, completion: nil)

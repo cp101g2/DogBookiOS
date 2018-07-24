@@ -109,6 +109,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yIb-a0-flf">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rJx-Dj-3uC">
                                 <rect key="frame" x="27" y="77" width="321" height="489"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -165,6 +169,7 @@
                         <outlet property="backgroundImageView" destination="v9U-NY-Xrk" id="KXd-0c-moy"/>
                         <outlet property="closeImageView" destination="GTc-4H-1Qn" id="kLB-cS-72f"/>
                         <outlet property="infoLable" destination="qd5-u2-rQ6" id="gvx-70-T7H"/>
+                        <outlet property="infoView" destination="yIb-a0-flf" id="Qfd-WQ-6zG"/>
                         <outlet property="nameLabel" destination="InL-lX-5ku" id="Sul-po-yLS"/>
                         <outlet property="profileImageView" destination="VcC-KS-XFb" id="1Ew-WZ-8nX"/>
                     </connections>
@@ -173,8 +178,118 @@
             </objects>
             <point key="canvasLocation" x="4868" y="-494.30284857571218"/>
         </scene>
+        <!--新增狗-->
+        <scene sceneID="2Yh-Jx-hKp">
+            <objects>
+                <viewController storyboardIdentifier="AddDog" id="6Sa-Lt-i7A" customClass="AddDogViewController" customModule="DogBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hyg-VW-PIq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="add_a_photo_black" translatesAutoresizingMaskIntoConstraints="NO" id="eWV-RE-Tvd">
+                                <rect key="frame" x="16" y="64" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="名字" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B4o-LB-5Si">
+                                <rect key="frame" x="188" y="64" width="167" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="歲數" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PKU-k4-jSI">
+                                <rect key="frame" x="188" y="184" width="168" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="性別" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yBN-ga-Fqn">
+                                <rect key="frame" x="188" y="102" width="52" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="genderInput:" destination="6Sa-Lt-i7A" eventType="editingDidBegin" id="Klt-7D-Hha"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="生日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HXx-ma-b1y">
+                                <rect key="frame" x="248" y="102" width="107" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="birthdayInput:" destination="6Sa-Lt-i7A" eventType="editingDidBegin" id="ZOH-eB-J96"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="品種" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z0k-pn-mcc">
+                                <rect key="frame" x="188" y="140" width="167" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="varietyInput:" destination="6Sa-Lt-i7A" eventType="editingDidBegin" id="QKt-VQ-9BL"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDQ-w2-SaL">
+                                <rect key="frame" x="282" y="221" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="取消"/>
+                                <connections>
+                                    <action selector="cancelBtnPressed:" destination="6Sa-Lt-i7A" eventType="touchUpInside" id="dGy-1E-zEe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQM-JW-FYX">
+                                <rect key="frame" x="325" y="221" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="創建"/>
+                                <connections>
+                                    <action selector="sendBtnPressed:" destination="6Sa-Lt-i7A" eventType="touchUpInside" id="fLc-25-QBe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="SWx-en-1ky"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="新增狗" id="oSh-a3-Cv6"/>
+                    <connections>
+                        <outlet property="ageInputText" destination="PKU-k4-jSI" id="Rd4-T3-6uj"/>
+                        <outlet property="birthdayInputText" destination="HXx-ma-b1y" id="5fS-FA-ID0"/>
+                        <outlet property="genderInputText" destination="yBN-ga-Fqn" id="Lw2-R3-Ntj"/>
+                        <outlet property="nameInputText" destination="B4o-LB-5Si" id="wSK-x5-M9X"/>
+                        <outlet property="profileImageView" destination="eWV-RE-Tvd" id="tFL-cN-sxC"/>
+                        <outlet property="varietyInputText" destination="Z0k-pn-mcc" id="l7J-uZ-C2w"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dMz-L4-mP9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6716" y="-494.30284857571218"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QA6-jI-fCx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fuK-Wl-wXK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dIs-sN-EbX">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6Sa-Lt-i7A" kind="relationship" relationship="rootViewController" id="VEb-dr-sdT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PvH-15-VMH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5776.8000000000002" y="-494.30284857571218"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="add_a_photo_black" width="48" height="48"/>
         <image name="add_circle_black" width="48" height="48"/>
         <image name="camera_alt_white" width="24" height="24"/>
         <image name="close_white" width="24" height="24"/>

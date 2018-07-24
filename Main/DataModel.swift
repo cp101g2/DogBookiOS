@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum Key : String{
+    case dogId = "dogId"
+}
+
 struct Owner : Codable{
     var id : Int?
     var email : String

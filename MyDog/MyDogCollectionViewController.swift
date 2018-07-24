@@ -13,6 +13,7 @@ private let ImageCellIdentifier = "Cell"
 class MyDogCollectionViewController: UICollectionViewController {
 
     let communicator = Communicator()
+    var media : Media?
     let LOGIN_PAGE = "Login"
     private let picker = UIImagePickerController()
     private let cropper = UIImageCropper(cropRatio: 16/9)
@@ -21,14 +22,13 @@ class MyDogCollectionViewController: UICollectionViewController {
     var dogId = -1
     var dog : Dog?
     var myArticles : [Article] = []
-    var profileImage : UIImage?
-    var backgroundImage : UIImage?
     var articleImage : [Int:UIImage] = [:]
     var dogInfo : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cropper.delegate = self// Important !!!!!
+        media = Media(communicator: communicator)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,18 +36,15 @@ class MyDogCollectionViewController: UICollectionViewController {
         dogId = UserDefaults.standard.integer(forKey: "dogId")
         if !isLogin{
             //跳至登入頁面
-            let storyboard = UIStoryboard(name: "MyDogStoryboard", bundle: nil)
+            let storyboard = UIStoryboard(name: "LoginStoryboard", bundle: nil)
             
             if let controller = storyboard.instantiateViewController(withIdentifier: LOGIN_PAGE) as? LoginViewController {
                 present(controller, animated: true)
             }
         } else if isLogin , dogId != -1{
-            let id = UserDefaults.standard.integer(forKey: "dogId")
             getMyDog()
-            getDogImage()
-            getBackgroundImage()
             getMyArticles()
-            print("showLoginPage 已經登入了 \(id)")
+            print("showLoginPage 已經登入了 \(dogId)")
         }
     }
 
@@ -66,13 +63,23 @@ class MyDogCollectionViewController: UICollectionViewController {
         
         header.profileImageView.addGestureRecognizer(tap)
         
+        
+        print(dogId)
         if isLogin ,dogId != -1{
             header.setBackgroundImage.addGestureRecognizer(setBackground)
-            header.profileImageView.image = profileImage
-            header.backgroundImageView.image = backgroundImage
+            dogId = UserDefaults.standard.integer(forKey: "dogId")
+            media?.getImage(GET_PROFILE_PHOTO,
+                            header.profileImageView,
+                            Key.dogId.rawValue,
+                            id: dogId, imageSize: 150)
+            
+            media?.getImage(GET_PROFILE_BACKGROUND_PHOTO,
+                            header.backgroundImageView,
+                            Key.dogId.rawValue,
+                            id: dogId, imageSize: 150)
+    
             header.infoLabel.text = dogInfo
         }
-        
         return header
     }
     
@@ -115,7 +122,11 @@ class MyDogCollectionViewController: UICollectionViewController {
             }
             
         } else {
-            print("will add dog")
+            let storyboard = UIStoryboard(name: "MyDogStoryboard", bundle: nil)
+            
+            if let controller = storyboard.instantiateViewController(withIdentifier: "AddDog") as? AddDogViewController {
+                present(controller, animated: true)
+            }
         }
         
     }
@@ -198,56 +209,13 @@ class MyDogCollectionViewController: UICollectionViewController {
         
     }
     
-    func getDogImage(){
-        var data = [String:Any]()
-        data["status"] = GET_PROFILE_PHOTO
-        data["dogId"] = UserDefaults.standard.integer(forKey: "dogId")
-        data["imageSize"] = 150
-            
-        // 送資料 and 解析回傳的JSON資料
-        communicator.doPost(url: MediaServlet, data: data) { (result) in
-            guard let result = result else {
-                assertionFailure("get data fail")
-                return
-            }
-            
-            guard let image = UIImage.init(data: result) else {
-                return
-            }
-            
-            self.profileImage = image
-            self.collectionView?.reloadData()
-        }
-    }
-    
-    func getBackgroundImage(){
-        var data = [String:Any]()
-        data["status"] = GET_PROFILE_BACKGROUND_PHOTO
-        data["dogId"] = UserDefaults.standard.integer(forKey: "dogId")
-        data["imageSize"] = Int(UIScreen.main.nativeBounds.width)
-        
-        communicator.doPost(url: MediaServlet, data: data) { (result) in
-            guard let result = result else {
-                assertionFailure("get data fail")
-                return
-            }
-            
-            guard let image = UIImage.init(data: result) else {
-                return
-            }
-            
-            self.backgroundImage = image
-            self.collectionView?.reloadData()
-        }
-        
-    }
     
     func getMyArticleImage(articleId: Int ,mediaId:Int){
         
         var data = [String:Any]()
         data["status"] = GET_ARTICLES
         data["mediaId"] = mediaId
-        data["imageSize"] = Int(UIScreen.main.nativeBounds.width)
+        data["imageSize"] = Int(UIScreen.main.nativeBounds.width)/3
         // 送資料 and 解析回傳的JSON資料
         communicator.doPost(url: MediaServlet, data: data) { (result) in
             guard let result = result else {
@@ -275,13 +243,11 @@ extension MyDogCollectionViewController : UIImageCropperProtocol{
         }
         let base64String = imageData.base64EncodedString()
         
-//        print(base64String)
         var data = [String:Any]()
         data["status"] = SET_PROFILE_BACKGROUND_PHOTO
         data["dogId"] = UserDefaults.standard.integer(forKey: "dogId")
         data["media"] = base64String
         data["type"] = 1
-//        imageView.image = croppedImage
         communicator.doPost(url: MediaServlet, data: data) { (result) in
             guard let result = result else {
                 return

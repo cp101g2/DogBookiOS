@@ -18,20 +18,33 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var infoView: UIView!
     
     let communicator = Communicator()
-   
-    
+    var media : Media?
+    var dogId : Int = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissInfo))
         closeImageView.addGestureRecognizer(tap)
+        infoView.addGestureRecognizer(tap)
+        
+        media = Media(communicator: communicator)
+        dogId = UserDefaults.standard.integer(forKey: Key.dogId.rawValue )
+        
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         getMyDog()
-        getDogImage()
-        getBackgroundImage()
+        media?.getImage(GET_PROFILE_PHOTO,
+                        profileImageView,
+                        Key.dogId.rawValue, id: dogId,
+                        imageSize: 150)
+        
+        media?.getImage(GET_PROFILE_BACKGROUND_PHOTO,
+                        backgroundImageView,
+                        Key.dogId.rawValue,
+                        id: dogId, imageSize: 150)
     }
     
     @IBAction func signOutBtnPressed(_ sender: Any) {
@@ -76,46 +89,4 @@ class InfoViewController: UIViewController {
         }
         
     }
-    
-    func getDogImage(){
-        var data = [String:Any]()
-        data["status"] = GET_PROFILE_PHOTO
-        data["dogId"] = UserDefaults.standard.integer(forKey: "dogId")
-        data["imageSize"] = 150
-        
-        // 送資料 and 解析回傳的JSON資料
-        communicator.doPost(url: MediaServlet, data: data) { (result) in
-            guard let result = result else {
-                assertionFailure("get data fail")
-                return
-            }
-            guard let image = UIImage.init(data: result) else {
-                return
-            }
-            
-            self.profileImageView.image = image
-        }
-    }
-    
-    func getBackgroundImage(){
-        var data = [String:Any]()
-        data["status"] = GET_PROFILE_BACKGROUND_PHOTO
-        data["dogId"] = UserDefaults.standard.integer(forKey: "dogId")
-        data["imageSize"] = Int(UIScreen.main.nativeBounds.width)
-        
-        communicator.doPost(url: MediaServlet, data: data) { (result) in
-            guard let result = result else {
-                assertionFailure("get data fail")
-                return
-            }
-            
-            guard let image = UIImage.init(data: result) else {
-                return
-            }
-            
-            self.backgroundImageView.image = image
-        }
-        
-    }
-
 }
