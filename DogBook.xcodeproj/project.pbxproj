@@ -12,6 +12,11 @@
 		18FD863B2106FD110040441F /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD863A2106FD110040441F /* FriendListTableViewCell.swift */; };
 		18FD863D210711BA0040441F /* FriendSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD863C210711BA0040441F /* FriendSearchViewController.swift */; };
 		18FD863F210711D70040441F /* FriendSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD863E210711D70040441F /* FriendSearchTableViewCell.swift */; };
+		DE16CCAC210B0455008FF04F /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE16CCAB210B0455008FF04F /* ArticleTableViewCell.swift */; };
+		DE16CCAE210B07A4008FF04F /* UIImage+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE16CCAD210B07A4008FF04F /* UIImage+resize.swift */; };
+		DE16CCB2210C20C7008FF04F /* AddArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE16CCB1210C20C7008FF04F /* AddArticleViewController.swift */; };
+		DE16CCB6210D7288008FF04F /* MessageBoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE16CCB5210D7288008FF04F /* MessageBoardTableViewCell.swift */; };
+		DE16CCDA210D99DC008FF04F /* MessageBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE16CCD9210D99DC008FF04F /* MessageBoardViewController.swift */; };
 		DE4DD08D210322FE00DE8587 /* UIImageCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DD08B210322FE00DE8587 /* UIImageCropper.swift */; };
 		DE4DD08E210322FE00DE8587 /* UIImage+FixOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DD08C210322FE00DE8587 /* UIImage+FixOrientation.swift */; };
 		DE4DD09021034E2500DE8587 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DD08F21034E2500DE8587 /* InfoViewController.swift */; };
@@ -36,6 +41,7 @@
 		DE6D4F6020EF3696003ECCC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE6D4F5E20EF3696003ECCC6 /* LaunchScreen.storyboard */; };
 		DED8DF5D2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8DF5C2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift */; };
 		DEEAA714210728980010B0BE /* FriendStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEEAA713210728980010B0BE /* FriendStoryboard.storyboard */; };
+		DEEAA71621084DEE0010B0BE /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEAA71521084DEE0010B0BE /* ArticleTableViewController.swift */; };
 		DEF02C9E20FF597F0013DB8D /* dog02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DEF02C9D20FF597F0013DB8D /* dog02.jpg */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +51,11 @@
 		18FD863A2106FD110040441F /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
 		18FD863C210711BA0040441F /* FriendSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchViewController.swift; sourceTree = "<group>"; };
 		18FD863E210711D70040441F /* FriendSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchTableViewCell.swift; sourceTree = "<group>"; };
+		DE16CCAB210B0455008FF04F /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		DE16CCAD210B07A4008FF04F /* UIImage+resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resize.swift"; sourceTree = "<group>"; };
+		DE16CCB1210C20C7008FF04F /* AddArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArticleViewController.swift; sourceTree = "<group>"; };
+		DE16CCB5210D7288008FF04F /* MessageBoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBoardTableViewCell.swift; sourceTree = "<group>"; };
+		DE16CCD9210D99DC008FF04F /* MessageBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBoardViewController.swift; sourceTree = "<group>"; };
 		DE4DD08B210322FE00DE8587 /* UIImageCropper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageCropper.swift; sourceTree = "<group>"; };
 		DE4DD08C210322FE00DE8587 /* UIImage+FixOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+FixOrientation.swift"; sourceTree = "<group>"; };
 		DE4DD08F21034E2500DE8587 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +82,7 @@
 		DE6D4F6120EF3696003ECCC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DED8DF5C2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDogInfoCollectionReusableView.swift; sourceTree = "<group>"; };
 		DEEAA713210728980010B0BE /* FriendStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendStoryboard.storyboard; sourceTree = "<group>"; };
+		DEEAA71521084DEE0010B0BE /* ArticleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
 		DEF02C9D20FF597F0013DB8D /* dog02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dog02.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +139,7 @@
 				DE4DD08B210322FE00DE8587 /* UIImageCropper.swift */,
 				DE4DD08C210322FE00DE8587 /* UIImage+FixOrientation.swift */,
 				DE4DD0A72105EC4700DE8587 /* Media.swift */,
+				DE16CCAD210B07A4008FF04F /* UIImage+resize.swift */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -154,6 +167,11 @@
 			isa = PBXGroup;
 			children = (
 				DE4DD09E2105A35F00DE8587 /* ArticleStoryboard.storyboard */,
+				DEEAA71521084DEE0010B0BE /* ArticleTableViewController.swift */,
+				DE16CCAB210B0455008FF04F /* ArticleTableViewCell.swift */,
+				DE16CCB1210C20C7008FF04F /* AddArticleViewController.swift */,
+				DE16CCB5210D7288008FF04F /* MessageBoardTableViewCell.swift */,
+				DE16CCD9210D99DC008FF04F /* MessageBoardViewController.swift */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -277,19 +295,25 @@
 				18FD863F210711D70040441F /* FriendSearchTableViewCell.swift in Sources */,
 				DE60810B20FD9D7600FA16C1 /* Communicator.swift in Sources */,
 				DE60811320FD9EC900FA16C1 /* Default.swift in Sources */,
+				DE16CCAE210B07A4008FF04F /* UIImage+resize.swift in Sources */,
 				DE60811920FDC79400FA16C1 /* MyDogCollectionViewController.swift in Sources */,
+				DE16CCDA210D99DC008FF04F /* MessageBoardViewController.swift in Sources */,
 				DE4DD08D210322FE00DE8587 /* UIImageCropper.swift in Sources */,
 				DE60810D20FD9DD000FA16C1 /* Action.swift in Sources */,
 				DE4DD0A82105EC4700DE8587 /* Media.swift in Sources */,
+				DE16CCAC210B0455008FF04F /* ArticleTableViewCell.swift in Sources */,
 				DE4DD08E210322FE00DE8587 /* UIImage+FixOrientation.swift in Sources */,
 				18FD863B2106FD110040441F /* FriendListTableViewCell.swift in Sources */,
 				DED8DF5D2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift in Sources */,
 				18FD863D210711BA0040441F /* FriendSearchViewController.swift in Sources */,
 				DE4DD09221042C1E00DE8587 /* SignUpViewController.swift in Sources */,
+				DE16CCB6210D7288008FF04F /* MessageBoardTableViewCell.swift in Sources */,
 				DE6D4F5820EF3695003ECCC6 /* ViewController.swift in Sources */,
 				DE4DD09021034E2500DE8587 /* InfoViewController.swift in Sources */,
 				18FD86382106FB520040441F /* FriendListViewController.swift in Sources */,
 				DE6D4F5620EF3695003ECCC6 /* AppDelegate.swift in Sources */,
+				DEEAA71621084DEE0010B0BE /* ArticleTableViewController.swift in Sources */,
+				DE16CCB2210C20C7008FF04F /* AddArticleViewController.swift in Sources */,
 				DE60811120FD9E7200FA16C1 /* DataModel.swift in Sources */,
 				DE4DD0A52105ACD800DE8587 /* AddDogViewController.swift in Sources */,
 				DE60811D20FDC94D00FA16C1 /* MyDogImageCollectionViewCell.swift in Sources */,

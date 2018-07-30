@@ -49,3 +49,18 @@ struct Chat : Codable{
     var message : String?
     var type : String?
 }
+
+struct Message : Codable{
+    //int id,dogId,articleId;
+    //String content;
+    //Date postingTime;
+    
+    var id : Int?
+    var dogId : Int?
+    var articleId : Int?
+    var content : String?
+    
+}
+
+
+
