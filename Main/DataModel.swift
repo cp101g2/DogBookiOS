@@ -49,3 +49,7 @@ struct Chat : Codable{
     var message : String?
     var type : String?
 }
+
+
+
+

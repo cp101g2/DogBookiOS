@@ -10,30 +10,17 @@ import UIKit
 
 class FriendListViewController: UIViewController,  UITableViewDelegate, UISearchBarDelegate, UITableViewDataSource {
 
-    
-    
     let communicator = Communicator()
     
     var friendId : [Int] = []
     
-//    var friend:Dog?
+
     
     var friendInfoDictionary = [Int:Dog]()
-    
     var currentFriendInfoDictionary = [Int:Dog]()
-    
-    
-    //////////////////////////////////////////
     var friendImageDictionary = [Int:UIImage]()
     
-    var currentFriendImageDictionary = [Int:DogMediaAction]()
-    
-    var friendImage:DogMediaAction?
-    
-    ///////////////////////////////////////
-    
-    
-    
+   
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameSearchBar: UISearchBar!
     override func viewDidLoad() {
@@ -42,23 +29,26 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
         tableView.delegate = self
         tableView.dataSource = self
         nameSearchBar.delegate = self
-        
-        alterLayout() //固定search bar
         getFriendIdList()
+         //固定search bar
+        alterLayout()
+
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
         
         return currentFriendInfoDictionary.count
-        
-        
     }
     
     
@@ -68,22 +58,25 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
         }
         
         let friendId = self.friendId[indexPath.row]
-
-        //        print("\(self.currentFriendInfoDictionary)")
         let friend = self.currentFriendInfoDictionary[friendId]
         let image = self.friendImageDictionary[friendId]
-        //        let friendImage = self.currentFriendImageDictionary[friendId]
-
-        //        print("\(indexPath.row),\(friendId)")
 
         cell.nameLabel.text = friend?.name
                 cell.ageLabel.text = String(format: "%01d", (friend?.age)!) + "歲"
-        cell.genderLabel.text = friend?.gender
+       
         cell.varietyLabel.text = friend?.variety
-
         cell.friendImageView.image = image
-
-        
+        if friend?.gender == "女" {
+            cell.genderImageView.image = UIImage(named: "female")
+        } else if friend?.gender == "男" {
+            cell.genderImageView.image =  UIImage(named: "male")
+        }
+       
+     
+      
+        cell.friendImageView.layer.cornerRadius = cell.friendImageView.bounds.width/2
+        cell.friendImageBorderView.layer.borderWidth = 2
+        cell.friendImageBorderView.layer.cornerRadius = cell.friendImageBorderView.bounds.width/2
         
         return cell
     }
@@ -97,52 +90,37 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
         return UITableViewAutomaticDimension
     }
     
+    
     //固定searchbar
     func alterLayout() {
         tableView.tableHeaderView = UIView()
         //        friendListTableView.estimatedSectionHeaderHeight = 40
     }
-    
     //searchBar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         guard !searchText.isEmpty else{
             currentFriendInfoDictionary = [:]
-            //            currentFriendImageDictionary = [:]
             getFriendIdList()
             return
         }
-        
-        
+
         currentFriendInfoDictionary = friendInfoDictionary.filter({ friend -> Bool in
             (friend.value.name?.lowercased().contains(searchText.lowercased()))!
-            
         })
         
-        //        for key in currentFriendInfoDictionary {
-        ////
-        //            currentFriendId.append(key.key)
-        //        }
         self.friendInfoDictionary = currentFriendInfoDictionary
-        //        self.friendImageDictionary = currentFriendImageDictionary
-        
         self.friendId = []
+        
         for friend in self.friendInfoDictionary {
             self.friendId.append(friend.key)
         }
-        
-        //        for friend in self.friendImageDictionary {
-        //            self.friendId.append(friend.key)
-        //        }
+      
         print("搜尋結果\(currentFriendInfoDictionary)")
         tableView.reloadData()
         
     }
     
-    
-    
-    
-    
+
     /*
     // MARK: - Navigation
 
@@ -153,21 +131,12 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
     }
     */
     
-    
     func getFriendIdList() {
         self.friendId = []
         // 準備將資料轉為JSON
         let dogId = UserDefaults.standard.integer(forKey: "dogId")
         let action = GetMyFriendList(action: GET_FRIEND_INFO, dogId: dogId)
-        //(2
-//        var data = [String:Any]()
-//        data["status"] = GET_FRIEND_INFO
-//        data["dogId"] = dogId
-//
-//        communicator.doPost(url: <#T##String#>, data: data) { (<#Data?#>) in
-//            <#code#>
-//        }
-//
+       
         // 準備將資料轉為JSON
         let encoder = JSONEncoder()
         encoder.outputFormatting = .init()
@@ -198,23 +167,12 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
                 self.tableView.reloadData()
                 print("\(self.friendId.count)")
             }
-            
-            
-            
         }
     }
-    
     
     func getFriendInfo (dogId:Int){
         let dog = Dog(ownerId: nil, dogId: dogId, name: nil, gender: nil, variety: nil, birthday: nil, age: nil)
         let action = GetDogInfo(status: GET_DOG_INFO, dog: dog)
-        
-        // 轉為JSON
-        guard let data = try? JSONEncoder().encode(dog) else {
-            assertionFailure("JSON encode Fail")
-            return
-        }
-        
         
         // 準備將資料轉為JSON
         let encoder = JSONEncoder()
@@ -239,19 +197,19 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
             
             output.dogId = dogId
             self.friendId.append(dogId)
-            
+        
             self.friendInfoDictionary[dogId] = output
             self.currentFriendInfoDictionary[dogId] = output
             
             self.tableView.reloadData()
-            
         }
         
     }
+ 
     
     
     func getFriendImage(dogId: Int){
-        //        let dogId = self.friendId[indexPath.row]
+        
         let action = DogMediaAction(status: GET_PROFILE_PHOTO, dogId: dogId,imageSize : 150)
         // 準備將資料轉為JSON
         let encoder = JSONEncoder()
@@ -273,8 +231,8 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
                 return
             }
             self.friendImageDictionary[dogId] = image
-            
-            print("圖片\(result)")
+            self.tableView.reloadData()
+
         }
     }
 
