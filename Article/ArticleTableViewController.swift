@@ -146,11 +146,8 @@ class ArticleTableViewController: UITableViewController {
                     return
                 }
                 self.getAuthorInfo(dogId: authorId)
-                self.getLikeCount(articleId: articleId)
-                self.getIsLike(articleId: articleId)
-                self.getAuthorImage(dogId: authorId)
-                self.getArticleImage(articleId: articleId, mediaId: mediaId)
                 self.getMessagesSize(articleId: articleId)
+                self.getArticleImage(articleId: articleId, mediaId: mediaId)
             }
         
         }
@@ -179,8 +176,11 @@ class ArticleTableViewController: UITableViewController {
             }
 
             self.authorNames[dogId] = name
-//            self.tableView.reloadData()
-        }
+            self.getAuthorImage(dogId: dogId)
+            if self.articleImages.count == self.articles?.count {
+                print("有哦")
+                self.tableView.reloadData()
+            }        }
         
         
     }
@@ -203,8 +203,10 @@ class ArticleTableViewController: UITableViewController {
             }
             
             self.authorImages[dogId] = image
-//            self.tableView.reloadData()
-        }
+            if self.articleImages.count == self.articles?.count {
+                print("有哦")
+                self.tableView.reloadData()
+            }        }
         
     }
     
@@ -252,7 +254,7 @@ class ArticleTableViewController: UITableViewController {
             }
             let likeCount = output["likeCount"]
             self.likeCount[articleId] = likeCount
-            
+            self.getIsLike(articleId: articleId)
         }
         
     }
@@ -275,6 +277,10 @@ class ArticleTableViewController: UITableViewController {
             
             let isLike = output!["isLike"]
             self.isLike[articleId] = isLike
+            if self.articleImages.count == self.articles?.count {
+                print("有哦")
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -291,6 +297,8 @@ class ArticleTableViewController: UITableViewController {
             }
             
             self.messageBoardSize[articleId] = output.count
+            self.getLikeCount(articleId: articleId)
+
         }
     }
     

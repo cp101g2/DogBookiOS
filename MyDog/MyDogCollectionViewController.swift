@@ -12,6 +12,9 @@ private let ImageCellIdentifier = "Cell"
 
 class MyDogCollectionViewController: UICollectionViewController {
 
+    @IBOutlet weak var myDogLayout: UICollectionViewFlowLayout!
+    @IBOutlet var myDogCollectionView: UICollectionView!
+    
     let communicator = Communicator()
     var media : Media?
     let LOGIN_PAGE = "Login"
@@ -29,6 +32,10 @@ class MyDogCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         cropper.delegate = self// Important !!!!!
         media = Media(communicator: communicator)
+        
+        let width = Int((myDogCollectionView.frame.width - 20) / 3)
+        myDogLayout.minimumLineSpacing = 8
+        myDogLayout.itemSize = CGSize(width: width , height: width)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -45,6 +52,7 @@ class MyDogCollectionViewController: UICollectionViewController {
             getMyDog()
             getMyArticles()
             print("showLoginPage 已經登入了 \(dogId)")
+            collectionView?.reloadData()
         }
     }
 

@@ -14,7 +14,6 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var infoLable: UILabel!
-    @IBOutlet weak var closeImageView: UIImageView!
     @IBOutlet weak var infoView: UIView!
     
     let communicator = Communicator()
@@ -25,7 +24,6 @@ class InfoViewController: UIViewController {
         super.viewDidLoad()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissInfo))
-        closeImageView.addGestureRecognizer(tap)
         infoView.addGestureRecognizer(tap)
         
         media = Media(communicator: communicator)

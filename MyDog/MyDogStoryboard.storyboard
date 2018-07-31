@@ -32,15 +32,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NZd-rN-pAJ">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NZd-rN-pAJ">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="NZd-rN-pAJ" secondAttribute="trailing" id="8Ym-ei-Gzf"/>
+                                    <constraint firstItem="NZd-rN-pAJ" firstAttribute="leading" secondItem="zxo-Z3-CzO" secondAttribute="leading" id="SVi-9j-W4h"/>
+                                    <constraint firstAttribute="bottom" secondItem="NZd-rN-pAJ" secondAttribute="bottom" id="ZHk-Do-iwf"/>
+                                    <constraint firstItem="NZd-rN-pAJ" firstAttribute="top" secondItem="zxo-Z3-CzO" secondAttribute="top" id="s6P-yx-rwn"/>
+                                </constraints>
                                 <size key="customSize" width="100" height="100"/>
                                 <connections>
-                                    <outlet property="articleImageView" destination="NZd-rN-pAJ" id="OhT-3o-7M3"/>
+                                    <outlet property="articleImageView" destination="NZd-rN-pAJ" id="AeV-y2-Wi9"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -95,6 +100,10 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="我的狗" id="D9T-7L-hhP"/>
+                    <connections>
+                        <outlet property="myDogCollectionView" destination="8ft-dq-9r8" id="dEc-Fx-qXi"/>
+                        <outlet property="myDogLayout" destination="Jg9-Ya-HzW" id="VMr-WQ-rss"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3p1-ty-Ct9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="2d1-Ha-A26" userLabel="profilePressed"/>
@@ -122,41 +131,47 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VcC-KS-XFb">
-                                        <rect key="frame" x="85" y="95" width="150" height="150"/>
+                                        <rect key="frame" x="112" y="116" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="75"/>
+                                                <integer key="value" value="50"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="InL-lX-5ku">
-                                        <rect key="frame" x="112" y="253" width="96" height="64"/>
+                                        <rect key="frame" x="8" y="222" width="305" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qd5-u2-rQ6">
-                                        <rect key="frame" x="72" y="325" width="178" height="68"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAh-iF-0uZ">
-                                        <rect key="frame" x="146" y="427" width="31" height="30"/>
+                                        <rect key="frame" x="255" y="451" width="31" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="登出"/>
                                         <connections>
                                             <action selector="signOutBtnPressed:" destination="ao1-wD-q0Y" eventType="touchUpInside" id="ORR-LR-B0y"/>
                                         </connections>
                                     </button>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="close_white" translatesAutoresizingMaskIntoConstraints="NO" id="GTc-4H-1Qn">
-                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhY-b8-AeL">
+                                        <rect key="frame" x="49" y="455" width="40" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
+                                        <state key="normal" title="散步"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jph-sv-nwQ">
+                                        <rect key="frame" x="123" y="451" width="77" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="更換大頭貼"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qd5-u2-rQ6">
+                                        <rect key="frame" x="71" y="282" width="178" height="105"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -167,7 +182,6 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="v9U-NY-Xrk" id="KXd-0c-moy"/>
-                        <outlet property="closeImageView" destination="GTc-4H-1Qn" id="kLB-cS-72f"/>
                         <outlet property="infoLable" destination="qd5-u2-rQ6" id="gvx-70-T7H"/>
                         <outlet property="infoView" destination="yIb-a0-flf" id="Qfd-WQ-6zG"/>
                         <outlet property="nameLabel" destination="InL-lX-5ku" id="Sul-po-yLS"/>
@@ -186,7 +200,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="add_a_photo_black" translatesAutoresizingMaskIntoConstraints="NO" id="eWV-RE-Tvd">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="add_circle_black" translatesAutoresizingMaskIntoConstraints="NO" id="eWV-RE-Tvd">
                                 <rect key="frame" x="16" y="64" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -289,9 +303,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add_a_photo_black" width="48" height="48"/>
         <image name="add_circle_black" width="48" height="48"/>
         <image name="camera_alt_white" width="24" height="24"/>
-        <image name="close_white" width="24" height="24"/>
     </resources>
 </document>
