@@ -9,14 +9,15 @@
 import UIKit
 
 class FriendPageSwitchViewController: UIViewController {
-
     
     @IBOutlet weak var switchPageControl: UISegmentedControl!
-    
     @IBOutlet weak var friendView: UIView!
     
     let friendListVC = UIStoryboard(name: "FriendStoryboard", bundle: nil).instantiateViewController(withIdentifier: "sbFriendList")
     let searchVC = UIStoryboard(name: "FriendStoryboard", bundle: nil).instantiateViewController(withIdentifier: "sbSearch")
+    let pairVC = UIStoryboard(name: "FriendStoryboard", bundle: nil).instantiateViewController(withIdentifier: "sbPair")
+    let addListVC = UIStoryboard(name: "FriendStoryboard", bundle: nil).instantiateViewController(withIdentifier: "sbAddList")
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,7 @@ class FriendPageSwitchViewController: UIViewController {
         
         switchPageControl.selectedSegmentIndex = 0
         switchPageControl.isHidden = false
-        //        friendListView.addSubview(friendListVC.view)
+        
     }
     
 
@@ -58,12 +59,13 @@ class FriendPageSwitchViewController: UIViewController {
             friendView.addSubview(friendListVC.view)
         case 1:
             friendView.addSubview(searchVC.view)
-//        case 2:
-//            friendView.addSubview(pairVC.view)
+        case 2:
+            friendView.addSubview(pairVC.view)
+        case 3:
+            friendView.addSubview(addListVC.view)
         default:
             friendView.addSubview(friendListVC.view)
-        }
-        
+        }        
     }
     
 }

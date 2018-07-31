@@ -9,7 +9,11 @@
 import UIKit
 
 class FriendSearchTableViewCell: UITableViewCell {
-
+    var currentAllUserInfoDictionary = [Int:Dog]()
+    var friendId:Int = 0
+    let communicator = Communicator()
+    
+    @IBOutlet weak var addFriendBtn: UIButton!
     @IBOutlet weak var varietyLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
@@ -25,5 +29,7 @@ class FriendSearchTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+   
 
 }

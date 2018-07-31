@@ -48,11 +48,12 @@ let ADD_EVENT = "addEvent";
 let GET_MESSAGE_BOARD = "getMessageBoard";
 let SEND_MESSAGE = "sendMessage";
 let GET_FRIEND_INFO = "getAll";
-let GET_All_Dog = "getAllDog"
 
-
-
-
+let GET_All_Dog = "getAllDog";
+let ADD_FRIEND = "addFriend";
+let ADD_FRIEND_TO_CHECKLIST = "addFriendToCheckList";
+let GET_FRIENDLIST_FROM_CHECKLIST = "getFriendIdFromCheckList";
+let DELETE_FRIEND = "deleteFromCheckList"
 
 
 

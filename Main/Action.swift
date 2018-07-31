@@ -53,3 +53,25 @@ struct GetAllDog: Codable {
     var dog: Dog
     
 }
+
+struct AddFriend: Codable {
+    var action: String?
+    var inviteDogId: Int
+    
+}
+
+
+struct DeleteFriend: Codable {
+    var action: String?
+    var dogId: Int
+    var inviteDogId: Int
+    
+}
+
+
+struct AddFriendToFriendship:Codable {
+    var action: String
+    var myDogId: Int
+    var friendId: Int
+    
+}

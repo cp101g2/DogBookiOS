@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		183561E9210FF7AA00489685 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 183561E8210FF7AA00489685 /* female.png */; };
+		183561EB210FFA2A00489685 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 183561EA210FFA2900489685 /* male.png */; };
+		183562252110360600489685 /* pairBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 183562242110360600489685 /* pairBackground.jpg */; };
+		1878FB3B210AB98E00715BB0 /* AddListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878FB3A210AB98E00715BB0 /* AddListTableViewController.swift */; };
+		1878FB3F210AD0BC00715BB0 /* AddListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878FB3E210AD0BC00715BB0 /* AddListTableViewCell.swift */; };
+		188B35B32107591000458C80 /* PairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B35B22107591000458C80 /* PairViewController.swift */; };
 		18FD86362106F9FB0040441F /* FriendPageSwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD86352106F9FB0040441F /* FriendPageSwitchViewController.swift */; };
 		18FD86382106FB520040441F /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD86372106FB520040441F /* FriendListViewController.swift */; };
 		18FD863B2106FD110040441F /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD863A2106FD110040441F /* FriendListTableViewCell.swift */; };
@@ -46,6 +52,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		183561E8210FF7AA00489685 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female.png; sourceTree = "<group>"; };
+		183561EA210FFA2900489685 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
+		183562242110360600489685 /* pairBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pairBackground.jpg; sourceTree = "<group>"; };
+		1878FB3A210AB98E00715BB0 /* AddListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListTableViewController.swift; sourceTree = "<group>"; };
+		1878FB3E210AD0BC00715BB0 /* AddListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListTableViewCell.swift; sourceTree = "<group>"; };
+		188B35B22107591000458C80 /* PairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairViewController.swift; sourceTree = "<group>"; };
 		18FD86352106F9FB0040441F /* FriendPageSwitchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPageSwitchViewController.swift; sourceTree = "<group>"; };
 		18FD86372106FB520040441F /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		18FD863A2106FD110040441F /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
@@ -102,9 +114,15 @@
 			children = (
 				18FD86352106F9FB0040441F /* FriendPageSwitchViewController.swift */,
 				18FD86372106FB520040441F /* FriendListViewController.swift */,
-				18FD863E210711D70040441F /* FriendSearchTableViewCell.swift */,
-				18FD863C210711BA0040441F /* FriendSearchViewController.swift */,
 				18FD863A2106FD110040441F /* FriendListTableViewCell.swift */,
+				18FD863C210711BA0040441F /* FriendSearchViewController.swift */,
+				18FD863E210711D70040441F /* FriendSearchTableViewCell.swift */,
+				1878FB3A210AB98E00715BB0 /* AddListTableViewController.swift */,
+				1878FB3E210AD0BC00715BB0 /* AddListTableViewCell.swift */,
+				188B35B22107591000458C80 /* PairViewController.swift */,
+				183562242110360600489685 /* pairBackground.jpg */,
+				183561E8210FF7AA00489685 /* female.png */,
+				183561EA210FFA2900489685 /* male.png */,
 				DEEAA713210728980010B0BE /* FriendStoryboard.storyboard */,
 			);
 			path = Friend;
@@ -272,10 +290,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEF02C9E20FF597F0013DB8D /* dog02.jpg in Resources */,
+				183562252110360600489685 /* pairBackground.jpg in Resources */,
 				DE6D4F6020EF3696003ECCC6 /* LaunchScreen.storyboard in Resources */,
+				183561EB210FFA2A00489685 /* male.png in Resources */,
 				DE4DD09F2105A35F00DE8587 /* ArticleStoryboard.storyboard in Resources */,
 				DE4DD0A32105A8AD00DE8587 /* LoginStoryboard.storyboard in Resources */,
 				DEEAA714210728980010B0BE /* FriendStoryboard.storyboard in Resources */,
+				183561E9210FF7AA00489685 /* female.png in Resources */,
 				DE6D4F5D20EF3696003ECCC6 /* Assets.xcassets in Resources */,
 				DE6D4F5B20EF3695003ECCC6 /* Main.storyboard in Resources */,
 				DE4DD09B2105A1AF00DE8587 /* MyDogStoryboard.storyboard in Resources */,
@@ -290,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1878FB3F210AD0BC00715BB0 /* AddListTableViewCell.swift in Sources */,
 				18FD86362106F9FB0040441F /* FriendPageSwitchViewController.swift in Sources */,
 				DE60811520FDA06700FA16C1 /* LoginViewController.swift in Sources */,
 				18FD863F210711D70040441F /* FriendSearchTableViewCell.swift in Sources */,
@@ -299,12 +321,14 @@
 				DE60811920FDC79400FA16C1 /* MyDogCollectionViewController.swift in Sources */,
 				DE16CCDA210D99DC008FF04F /* MessageBoardViewController.swift in Sources */,
 				DE4DD08D210322FE00DE8587 /* UIImageCropper.swift in Sources */,
+				1878FB3B210AB98E00715BB0 /* AddListTableViewController.swift in Sources */,
 				DE60810D20FD9DD000FA16C1 /* Action.swift in Sources */,
 				DE4DD0A82105EC4700DE8587 /* Media.swift in Sources */,
 				DE16CCAC210B0455008FF04F /* ArticleTableViewCell.swift in Sources */,
 				DE4DD08E210322FE00DE8587 /* UIImage+FixOrientation.swift in Sources */,
 				18FD863B2106FD110040441F /* FriendListTableViewCell.swift in Sources */,
 				DED8DF5D2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift in Sources */,
+				188B35B32107591000458C80 /* PairViewController.swift in Sources */,
 				18FD863D210711BA0040441F /* FriendSearchViewController.swift in Sources */,
 				DE4DD09221042C1E00DE8587 /* SignUpViewController.swift in Sources */,
 				DE16CCB6210D7288008FF04F /* MessageBoardTableViewCell.swift in Sources */,
@@ -461,7 +485,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 52UY9AH79Z;
+				DEVELOPMENT_TEAM = PB2V6VT4QZ;
 				INFOPLIST_FILE = DogBook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -479,7 +503,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 52UY9AH79Z;
+				DEVELOPMENT_TEAM = PB2V6VT4QZ;
 				INFOPLIST_FILE = DogBook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -14,23 +14,12 @@ class FriendSearchViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var nameSearchBar: UISearchBar!
     let communicator = Communicator()
     
-    var AllDogId : [Int] = []
+    var friendId : [Int] = []
+    var AllUserId : [Int] = []
     
-    var AllDog:Dog?
-    
-    var AllDogInfoDictionary = [Int:Dog]()
-    
-    var currentAllDogInfoDictionary = [Int:Dog]()
-    
-    
-    //////////////////////////////////////////
-    var friendImageDictionary = [Int:UIImage]()
-    
-    var currentFriendImageDictionary = [Int:DogMediaAction]()
-    
-    var friendImage:DogMediaAction?
-    
-    ///////////////////////////////////////
+    var AllUserInfoDictionary = [Int:Dog]()
+    var currentAllUserInfoDictionary = [Int:Dog]()
+    var allUserImageDictionary = [Int:UIImage]()
     
     
     
@@ -44,8 +33,13 @@ class FriendSearchViewController: UIViewController, UITableViewDelegate, UITable
         
         // Do any additional setup after loading the view.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
-        downloadFriendList()
+        super.viewWillAppear(animated)
+        downloadAllUserIdList()
+        getFriendIdList()
+       
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,36 +48,35 @@ class FriendSearchViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        print(" 朋友數量\(friendInfoDictionary.count)")
-        //        print(" 朋友清單\(friendInfoDictionary)")
         
-        return currentAllDogInfoDictionary.count
-        
-        
+        return currentAllUserInfoDictionary.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FriendSearchCell", for: indexPath) as? FriendSearchTableViewCell else {
             return UITableViewCell()
         }
         
-        let friendId = self.AllDogId[indexPath.row]
+        let AllUserId = self.AllUserId[indexPath.row]
         
-        //        print("\(self.currentFriendInfoDictionary)")
-        let friend = self.currentAllDogInfoDictionary[friendId]
-        let image = self.friendImageDictionary[friendId]
-        //        let friendImage = self.currentFriendImageDictionary[friendId]
+        let friend = self.currentAllUserInfoDictionary[AllUserId]
         
-        //        print("\(indexPath.row),\(friendId)")
+        let image = self.allUserImageDictionary[AllUserId]
+     
         
         cell.nameLabel.text = friend?.name
-        //        cell.ageLabel.text = String(format: "%01d", (friend?.age)!) + "歲"
+        cell.ageLabel.text = String(format: "%01d", (friend?.age)!) + "歲"
         cell.genderLabel.text = friend?.gender
         cell.varietyLabel.text = friend?.variety
         
         cell.friendImageView.image = image
         
+        cell.addFriendBtn.tag = (friend?.dogId)!
         
+        cell.currentAllUserInfoDictionary = self.currentAllUserInfoDictionary
+      
+        cell.addFriendBtn.addTarget(self, action: #selector(addBtnPressed), for: UIControlEvents.touchUpInside)
         
         return cell
     }
@@ -105,47 +98,35 @@ class FriendSearchViewController: UIViewController, UITableViewDelegate, UITable
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         guard !searchText.isEmpty else{
-            currentAllDogInfoDictionary = [:]
-            //            currentFriendImageDictionary = [:]
-            downloadFriendList()
+            currentAllUserInfoDictionary = [:]
+            
+            downloadAllUserIdList()
+            getFriendIdList()
             return
         }
         
         
-        currentAllDogInfoDictionary = AllDogInfoDictionary.filter({ friend -> Bool in
+        currentAllUserInfoDictionary = AllUserInfoDictionary.filter({ friend -> Bool in
             (friend.value.name?.lowercased().contains(searchText.lowercased()))!
             
         })
+    
+        self.AllUserInfoDictionary = currentAllUserInfoDictionary
+        self.AllUserId = []
         
-        //        for key in currentFriendInfoDictionary {
-        ////
-        //            currentFriendId.append(key.key)
-        //        }
-        self.AllDogInfoDictionary = currentAllDogInfoDictionary
-        //        self.friendImageDictionary = currentFriendImageDictionary
-        
-        self.AllDogId = []
-        for friend in self.AllDogInfoDictionary {
-            self.AllDogId.append(friend.key)
+        for friend in self.AllUserInfoDictionary {
+            self.AllUserId.append(friend.key)
         }
         
-        //        for friend in self.friendImageDictionary {
-        //            self.friendId.append(friend.key)
-        //        }
-        print("搜尋結果\(currentAllDogInfoDictionary)")
+        print("搜尋結果\(currentAllUserInfoDictionary)")
         tableView.reloadData()
         
     }
     
+ 
     
     
-    
-    
-    
-    
-    
-    
-    func getFriendInfo (dogId:Int){
+    func getAllUserInfo (dogId:Int){
         let dog = Dog(ownerId: nil, dogId: dogId, name: nil, gender: nil, variety: nil, birthday: nil, age: nil)
         let action = GetDogInfo(status: GET_DOG_INFO, dog: dog)
         
@@ -171,11 +152,26 @@ class FriendSearchViewController: UIViewController, UITableViewDelegate, UITable
             }
             print(output)
             output.dogId = dogId
-            self.AllDogId.append(dogId)
+            self.AllUserId.append(dogId)
             
-            self.AllDogInfoDictionary[dogId] = output
-            self.currentAllDogInfoDictionary[dogId] = output
+            self.AllUserInfoDictionary[dogId] = output
+            self.currentAllUserInfoDictionary[dogId] = output
             
+            
+            for friendId in self.friendId {
+             print(friendId)
+            self.AllUserInfoDictionary.removeValue(forKey: friendId)
+            }
+            
+       
+             for friendId in self.friendId {
+                self.currentAllUserInfoDictionary.removeValue(forKey: friendId)
+            }
+            for friendId in self.friendId {
+                if let index = self.AllUserId.index(of: friendId) {
+                    self.AllUserId.remove(at: index)
+                }
+            }
             self.tableView.reloadData()
             
         }
@@ -192,8 +188,8 @@ class FriendSearchViewController: UIViewController, UITableViewDelegate, UITable
      */
     
     
-    func downloadFriendList(){
-        self.AllDogId = []
+    func downloadAllUserIdList(){
+        self.AllUserId = []
         // 準備將資料轉為JSON
         let dogId = UserDefaults.standard.integer(forKey: "dogId")
         let dog = Dog(ownerId: nil, dogId: dogId, name: nil, gender: nil, variety: nil, birthday: nil, age: nil)
@@ -214,31 +210,60 @@ class FriendSearchViewController: UIViewController, UITableViewDelegate, UITable
                 assertionFailure("get data fail")
                 return
             }
+            
             guard let output = try? JSONDecoder().decode([Dog].self, from: result) else {
                 assertionFailure("get output fail")
                 return
             }
-            print("\(output.count)")
             for friendId in output {
                 
-                self.getFriendInfo(dogId: friendId.dogId!)
-                self.getFriendImage(dogId: friendId.dogId!)
-                
+                self.getAllUserInfo(dogId: friendId.dogId!)
+                self.getAllUserImage(dogId: friendId.dogId!)
             }
-            
-            //            DispatchQueue.main.async {
-            //
-            //                )
-            //            }
+   
             self.tableView.reloadData()
-            
-            
+          
         }
     }
     
+    func getFriendIdList() {
+        
+        self.friendId = []
+        // 準備將資料轉為JSON
+        let dogId = UserDefaults.standard.integer(forKey: "dogId")
+        let action = GetMyFriendList(action: GET_FRIEND_INFO, dogId: dogId)
+
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .init()
+        
+        // 轉為JSON
+        guard let uploadData = try? encoder.encode(action) else {
+            assertionFailure("JSON encode Fail")
+            return
+        }
+        // 送資料 and 解析回傳的JSON資料
+        communicator.doPost(url: FriendServlet, data: uploadData) { (result) in
+            
+            guard let result = result else {
+                assertionFailure("get data fail")
+                return
+            }
+            guard let output = try? JSONDecoder().decode([GetMyFriendList].self, from: result) else {
+                assertionFailure("get output fail")
+                return
+            }
+            
+            for friendId in output {
+                self.friendId.append(friendId.dogId)
+            }
+   
+        }
+    }
     
-    func getFriendImage(dogId: Int){
-        //        let dogId = self.friendId[indexPath.row]
+   
+    
+    func getAllUserImage(dogId: Int){
+        
         let action = DogMediaAction(status: GET_PROFILE_PHOTO, dogId: dogId,imageSize : 150)
         // 準備將資料轉為JSON
         let encoder = JSONEncoder()
@@ -259,12 +284,51 @@ class FriendSearchViewController: UIViewController, UITableViewDelegate, UITable
             guard let image = UIImage.init(data: result) else {
                 return
             }
-            self.friendImageDictionary[dogId] = image
-            
-            print("圖片\(result)")
+            self.allUserImageDictionary[dogId] = image
+            self.tableView.reloadData()
         }
     }
     
     
+    //按加入好友後
+   @objc
+    func addBtnPressed(sender: UIButton){
     
+    addFriend(inviteDogId: sender.tag)
+    //Button 不能按 灰色 透明度 改文字
+    sender.isUserInteractionEnabled = false
+    sender.tintColor = UIColor.gray
+    sender.alpha = 0.4
+    sender.setTitle("已加入", for: .normal)
+    }
+ 
+
+    func addFriend (inviteDogId: Int){
+      
+        let dogId = UserDefaults.standard.integer(forKey: "dogId")
+        
+        var data = [String:Any]()
+        data["action"] = ADD_FRIEND_TO_CHECKLIST
+        data["dogId"] = dogId
+        data["inviteDogId"] = inviteDogId
+        
+        communicator.doPost(url: FriendServlet, data: data) { (result) in
+            guard let result = result else {
+                assertionFailure("get data fail")
+                return
+            }
+    
+            guard let output = (try? JSONSerialization.jsonObject(with: result, options: [])) as? [String:Int] else {
+                return
+            }
+          
+        }        
+        
+    }
+
+    
+    
+    
+    
+ 
 }

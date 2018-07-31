@@ -1,20 +1,18 @@
 //
-//  FriendListTableViewCell.swift
+//  AddListTableViewCell.swift
 //  DogBook
 //
-//  Created by Apple on 2018/7/24.
+//  Created by Apple on 2018/7/27.
 //  Copyright © 2018年 lee. All rights reserved.
 //
 
 import UIKit
 
-class FriendListTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var friendImageBorderView: UIImageView!
-    @IBOutlet weak var genderImageView: UIImageView!
-    @IBOutlet weak var varietyLabel: UILabel!
-
+class AddListTableViewCell: UITableViewCell {
+    @IBOutlet weak var addConfirmedBtn: UIButton!
     @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
+    @IBOutlet weak var varietyLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var friendImageView: UIImageView!
     override func awakeFromNib() {
