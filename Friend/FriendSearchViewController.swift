@@ -215,8 +215,8 @@ class FriendSearchViewController: UIViewController, UITableViewDelegate, UITable
                 assertionFailure("get output fail")
                 return
             }
+            
             for friendId in output {
-                
                 self.getAllUserInfo(dogId: friendId.dogId!)
                 self.getAllUserImage(dogId: friendId.dogId!)
             }

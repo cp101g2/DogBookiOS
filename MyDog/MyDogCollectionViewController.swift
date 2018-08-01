@@ -27,6 +27,8 @@ class MyDogCollectionViewController: UICollectionViewController {
     var myArticles : [Article] = []
     var articleImage : [Int:UIImage] = [:]
     var dogInfo : String?
+    var profileImage : UIImage?
+    var backgroundImage : UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,19 +75,31 @@ class MyDogCollectionViewController: UICollectionViewController {
         
         
         print(dogId)
+        
         if isLogin ,dogId != -1{
             header.setBackgroundImage.addGestureRecognizer(setBackground)
             dogId = UserDefaults.standard.integer(forKey: "dogId")
-            media?.getImage(GET_PROFILE_PHOTO,
-                            header.profileImageView,
-                            Key.dogId.rawValue,
-                            id: dogId, imageSize: 150)
             
-            media?.getImage(GET_PROFILE_BACKGROUND_PHOTO,
-                            header.backgroundImageView,
-                            Key.dogId.rawValue,
-                            id: dogId, imageSize: 150)
-    
+            getImage(status: GET_PROFILE_PHOTO,
+                     key: "dogId", id: dogId,
+                     imageSize: 150,
+                     outsideImageView: header.profileImageView)
+            
+            getImage(status: GET_PROFILE_BACKGROUND_PHOTO,
+                     key: "dogId", id: dogId, imageSize: 150,
+                     outsideImageView: header.backgroundImageView)
+            
+//            media?.getImage(GET_PROFILE_PHOTO,
+//                            header.profileImageView,
+//                            Key.dogId.rawValue,
+//                            id: dogId, imageSize: 150)
+//
+//            media?.getImage(GET_PROFILE_BACKGROUND_PHOTO,
+//                            header.backgroundImageView,
+//                            Key.dogId.rawValue,
+//                            id: dogId, imageSize: 150)
+            
+            
             header.infoLabel.text = dogInfo
         }
         return header
@@ -121,6 +135,10 @@ class MyDogCollectionViewController: UICollectionViewController {
             
             if let controller = storyboard.instantiateViewController(withIdentifier: "Info") as? InfoViewController {
                 
+                controller.dog = dog
+                controller.profileImage = profileImage
+                controller.backgroundImage = backgroundImage
+ 
                 controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
                 controller.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                 controller.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
@@ -178,7 +196,6 @@ class MyDogCollectionViewController: UICollectionViewController {
                 assertionFailure("get output fail")
                 return
             }
-            print(output.count)
             self.myArticles = output
             
             for article in output {
@@ -207,6 +224,7 @@ class MyDogCollectionViewController: UICollectionViewController {
             guard let output = try? JSONDecoder().decode(Dog.self, from: result) else {
                 return
             }
+            self.dog = output
             guard let name = output.name else {
                 return
             }
@@ -217,6 +235,36 @@ class MyDogCollectionViewController: UICollectionViewController {
         
     }
     
+    func getImage(status:String,
+                  key:String,
+                  id:Int,
+                  imageSize:Int,
+                  outsideImageView:UIImageView){
+        
+        unowned var insideImageView = outsideImageView
+        var data = [String:Any]()
+        data["status"] = status
+        data[key] = id
+        data["imageSize"] = imageSize
+        
+        // 送資料 and 解析回傳的JSON資料
+        communicator.doPost(url: MediaServlet, data: data) { (result) in
+            guard let result = result else {
+                assertionFailure("get data fail")
+                return
+            }
+            
+            guard let image = UIImage.init(data: result) else {
+                return
+            }
+            if status == GET_PROFILE_PHOTO {
+                self.profileImage = image
+            } else {
+                self.backgroundImage = image
+            }
+            insideImageView.image = image
+        }
+    }
     
     func getMyArticleImage(articleId: Int ,mediaId:Int){
         
