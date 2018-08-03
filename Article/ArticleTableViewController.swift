@@ -76,9 +76,11 @@ class ArticleTableViewController: UITableViewController {
         
         cell.tag = articleId
         cell.isLike = isLike
-        
+        cell.likeCount = likes
         if isLike {
             cell.likeImageView.image = UIImage(named: "favorite_black_24pt")
+        } else {
+            cell.likeImageView.image = UIImage(named: "favorite_border_black_24pt")
         }
         
         cell.authorImageView.image = authorImages[authorId]
@@ -117,7 +119,6 @@ class ArticleTableViewController: UITableViewController {
         
         
         cell.likeImageView.addGestureRecognizer(cell.likeTap)
-        cell.isLike = false
         
         
         return cell

@@ -24,7 +24,8 @@ class ArticleTableViewCell: UITableViewCell {
     var likeTap : UITapGestureRecognizer!
     var articleId : Int!
     var isLike : Bool!
-
+    var likeCount : Int = 0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -44,12 +45,15 @@ class ArticleTableViewCell: UITableViewCell {
         if isLike {
             isLike = false
             deleteLike()
+            likeCount = likeCount - 1
             likeImageView.image = UIImage(named: "favorite_border_black_24pt")
         } else {
             isLike = true
             addLike()
+            likeCount = likeCount + 1
             likeImageView.image = UIImage(named: "favorite_black_24pt")
         }
+        likeCountLabel.text = "\(likeCount) likes"
         print("alread add.\(self.tag)")
     }
     
