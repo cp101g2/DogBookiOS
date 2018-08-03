@@ -18,11 +18,13 @@
 		18FD863B2106FD110040441F /* FriendListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD863A2106FD110040441F /* FriendListTableViewCell.swift */; };
 		18FD863D210711BA0040441F /* FriendSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD863C210711BA0040441F /* FriendSearchViewController.swift */; };
 		18FD863F210711D70040441F /* FriendSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FD863E210711D70040441F /* FriendSearchTableViewCell.swift */; };
+		3BD043CEF326100AB46068F2 /* Pods_DogBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2667DD86245992E7E82CF9D0 /* Pods_DogBook.framework */; };
 		DE16CCAC210B0455008FF04F /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE16CCAB210B0455008FF04F /* ArticleTableViewCell.swift */; };
 		DE16CCAE210B07A4008FF04F /* UIImage+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE16CCAD210B07A4008FF04F /* UIImage+resize.swift */; };
 		DE16CCB2210C20C7008FF04F /* AddArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE16CCB1210C20C7008FF04F /* AddArticleViewController.swift */; };
 		DE16CCB6210D7288008FF04F /* MessageBoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE16CCB5210D7288008FF04F /* MessageBoardTableViewCell.swift */; };
 		DE16CCDA210D99DC008FF04F /* MessageBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE16CCD9210D99DC008FF04F /* MessageBoardViewController.swift */; };
+		DE1B94F72112D43B0049197A /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1B94F62112D43B0049197A /* ChatView.swift */; };
 		DE4DD08D210322FE00DE8587 /* UIImageCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DD08B210322FE00DE8587 /* UIImageCropper.swift */; };
 		DE4DD08E210322FE00DE8587 /* UIImage+FixOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DD08C210322FE00DE8587 /* UIImage+FixOrientation.swift */; };
 		DE4DD09021034E2500DE8587 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DD08F21034E2500DE8587 /* InfoViewController.swift */; };
@@ -49,6 +51,11 @@
 		DEEAA714210728980010B0BE /* FriendStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEEAA713210728980010B0BE /* FriendStoryboard.storyboard */; };
 		DEEAA71621084DEE0010B0BE /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEAA71521084DEE0010B0BE /* ArticleTableViewController.swift */; };
 		DEF02C9E20FF597F0013DB8D /* dog02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DEF02C9D20FF597F0013DB8D /* dog02.jpg */; };
+		DEFE38832111806C00DAE4F0 /* ChatWebsocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFE38822111806C00DAE4F0 /* ChatWebsocketClient.swift */; };
+		DEFE3885211183FB00DAE4F0 /* ChatFriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFE3884211183FB00DAE4F0 /* ChatFriendTableViewController.swift */; };
+		DEFE38872111841300DAE4F0 /* ChatFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFE38862111841300DAE4F0 /* ChatFriendTableViewCell.swift */; };
+		DEFE388921119E6500DAE4F0 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFE388821119E6500DAE4F0 /* ChatRoomViewController.swift */; };
+		DEFE388B21119E7C00DAE4F0 /* ChatRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFE388A21119E7C00DAE4F0 /* ChatRoomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,11 +70,14 @@
 		18FD863A2106FD110040441F /* FriendListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListTableViewCell.swift; sourceTree = "<group>"; };
 		18FD863C210711BA0040441F /* FriendSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchViewController.swift; sourceTree = "<group>"; };
 		18FD863E210711D70040441F /* FriendSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchTableViewCell.swift; sourceTree = "<group>"; };
+		2667DD86245992E7E82CF9D0 /* Pods_DogBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DogBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A50F9D7D2B2852DF054DE2A8 /* Pods-DogBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogBook.release.xcconfig"; path = "Pods/Target Support Files/Pods-DogBook/Pods-DogBook.release.xcconfig"; sourceTree = "<group>"; };
 		DE16CCAB210B0455008FF04F /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		DE16CCAD210B07A4008FF04F /* UIImage+resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resize.swift"; sourceTree = "<group>"; };
 		DE16CCB1210C20C7008FF04F /* AddArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArticleViewController.swift; sourceTree = "<group>"; };
 		DE16CCB5210D7288008FF04F /* MessageBoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBoardTableViewCell.swift; sourceTree = "<group>"; };
 		DE16CCD9210D99DC008FF04F /* MessageBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBoardViewController.swift; sourceTree = "<group>"; };
+		DE1B94F62112D43B0049197A /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		DE4DD08B210322FE00DE8587 /* UIImageCropper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageCropper.swift; sourceTree = "<group>"; };
 		DE4DD08C210322FE00DE8587 /* UIImage+FixOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+FixOrientation.swift"; sourceTree = "<group>"; };
 		DE4DD08F21034E2500DE8587 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +106,12 @@
 		DEEAA713210728980010B0BE /* FriendStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendStoryboard.storyboard; sourceTree = "<group>"; };
 		DEEAA71521084DEE0010B0BE /* ArticleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
 		DEF02C9D20FF597F0013DB8D /* dog02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dog02.jpg; sourceTree = "<group>"; };
+		DEFE38822111806C00DAE4F0 /* ChatWebsocketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatWebsocketClient.swift; sourceTree = "<group>"; };
+		DEFE3884211183FB00DAE4F0 /* ChatFriendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFriendTableViewController.swift; sourceTree = "<group>"; };
+		DEFE38862111841300DAE4F0 /* ChatFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFriendTableViewCell.swift; sourceTree = "<group>"; };
+		DEFE388821119E6500DAE4F0 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
+		DEFE388A21119E7C00DAE4F0 /* ChatRoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewCell.swift; sourceTree = "<group>"; };
+		E22AA24DEDE40171A932963F /* Pods-DogBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogBook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DogBook/Pods-DogBook.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BD043CEF326100AB46068F2 /* Pods_DogBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +143,23 @@
 				DEEAA713210728980010B0BE /* FriendStoryboard.storyboard */,
 			);
 			path = Friend;
+			sourceTree = "<group>";
+		};
+		48ABDB3F2FA6A7C1E84F34B0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E22AA24DEDE40171A932963F /* Pods-DogBook.debug.xcconfig */,
+				A50F9D7D2B2852DF054DE2A8 /* Pods-DogBook.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7D3B39D8C7A6CF10E87FA8EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2667DD86245992E7E82CF9D0 /* Pods_DogBook.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DE4DD09521059F4700DE8587 /* MyDog */ = {
@@ -169,6 +203,7 @@
 				DE60811220FD9EC900FA16C1 /* Default.swift */,
 				DE60811020FD9E7200FA16C1 /* DataModel.swift */,
 				DE60810C20FD9DD000FA16C1 /* Action.swift */,
+				DEFE38822111806C00DAE4F0 /* ChatWebsocketClient.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -177,6 +212,11 @@
 			isa = PBXGroup;
 			children = (
 				DE4DD0A02105A36900DE8587 /* ChatStoryboard.storyboard */,
+				DEFE3884211183FB00DAE4F0 /* ChatFriendTableViewController.swift */,
+				DEFE38862111841300DAE4F0 /* ChatFriendTableViewCell.swift */,
+				DEFE388821119E6500DAE4F0 /* ChatRoomViewController.swift */,
+				DEFE388A21119E7C00DAE4F0 /* ChatRoomTableViewCell.swift */,
+				DE1B94F62112D43B0049197A /* ChatView.swift */,
 			);
 			path = "C\bhat";
 			sourceTree = "<group>";
@@ -206,6 +246,8 @@
 				DE4DD09521059F4700DE8587 /* MyDog */,
 				DE6D4F5420EF3695003ECCC6 /* DogBook */,
 				DE6D4F5320EF3695003ECCC6 /* Products */,
+				48ABDB3F2FA6A7C1E84F34B0 /* Pods */,
+				7D3B39D8C7A6CF10E87FA8EA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -238,9 +280,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE6D4F6420EF3696003ECCC6 /* Build configuration list for PBXNativeTarget "DogBook" */;
 			buildPhases = (
+				FE57061E81EAF234C2F3EC21 /* [CP] Check Pods Manifest.lock */,
 				DE6D4F4E20EF3695003ECCC6 /* Sources */,
 				DE6D4F4F20EF3695003ECCC6 /* Frameworks */,
 				DE6D4F5020EF3695003ECCC6 /* Resources */,
+				03464A14EB393CC989CA8F21 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -306,6 +350,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		03464A14EB393CC989CA8F21 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DogBook/Pods-DogBook-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DogBook/Pods-DogBook-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE57061E81EAF234C2F3EC21 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DogBook-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DE6D4F4E20EF3695003ECCC6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -315,7 +398,9 @@
 				18FD86362106F9FB0040441F /* FriendPageSwitchViewController.swift in Sources */,
 				DE60811520FDA06700FA16C1 /* LoginViewController.swift in Sources */,
 				18FD863F210711D70040441F /* FriendSearchTableViewCell.swift in Sources */,
+				DE1B94F72112D43B0049197A /* ChatView.swift in Sources */,
 				DE60810B20FD9D7600FA16C1 /* Communicator.swift in Sources */,
+				DEFE3885211183FB00DAE4F0 /* ChatFriendTableViewController.swift in Sources */,
 				DE60811320FD9EC900FA16C1 /* Default.swift in Sources */,
 				DE16CCAE210B07A4008FF04F /* UIImage+resize.swift in Sources */,
 				DE60811920FDC79400FA16C1 /* MyDogCollectionViewController.swift in Sources */,
@@ -327,6 +412,7 @@
 				DE16CCAC210B0455008FF04F /* ArticleTableViewCell.swift in Sources */,
 				DE4DD08E210322FE00DE8587 /* UIImage+FixOrientation.swift in Sources */,
 				18FD863B2106FD110040441F /* FriendListTableViewCell.swift in Sources */,
+				DEFE38872111841300DAE4F0 /* ChatFriendTableViewCell.swift in Sources */,
 				DED8DF5D2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift in Sources */,
 				188B35B32107591000458C80 /* PairViewController.swift in Sources */,
 				18FD863D210711BA0040441F /* FriendSearchViewController.swift in Sources */,
@@ -337,10 +423,13 @@
 				18FD86382106FB520040441F /* FriendListViewController.swift in Sources */,
 				DE6D4F5620EF3695003ECCC6 /* AppDelegate.swift in Sources */,
 				DEEAA71621084DEE0010B0BE /* ArticleTableViewController.swift in Sources */,
+				DEFE388B21119E7C00DAE4F0 /* ChatRoomTableViewCell.swift in Sources */,
 				DE16CCB2210C20C7008FF04F /* AddArticleViewController.swift in Sources */,
+				DEFE38832111806C00DAE4F0 /* ChatWebsocketClient.swift in Sources */,
 				DE60811120FD9E7200FA16C1 /* DataModel.swift in Sources */,
 				DE4DD0A52105ACD800DE8587 /* AddDogViewController.swift in Sources */,
 				DE60811D20FDC94D00FA16C1 /* MyDogImageCollectionViewCell.swift in Sources */,
+				DEFE388921119E6500DAE4F0 /* ChatRoomViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +571,7 @@
 		};
 		DE6D4F6520EF3696003ECCC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E22AA24DEDE40171A932963F /* Pods-DogBook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -500,6 +590,7 @@
 		};
 		DE6D4F6620EF3696003ECCC6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A50F9D7D2B2852DF054DE2A8 /* Pods-DogBook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

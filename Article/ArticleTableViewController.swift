@@ -29,7 +29,7 @@ class ArticleTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         dogId = UserDefaults.standard.integer(forKey: "dogId")
         articles = []
         articleImages = [:]
@@ -41,12 +41,14 @@ class ArticleTableViewController: UITableViewController {
         getArticles()
     }
     
+    
     @IBAction func openMessageBoard(_ sender: UIButton) {
         print(sender.tag)
         let nextVC = UIStoryboard(name: "ArticleStoryboard", bundle: nil).instantiateViewController(withIdentifier: "messageBoard") as! MessageBoardViewController
         nextVC.articleId = sender.tag
-        let navigation = UINavigationController(rootViewController: nextVC)
-        self.show(navigation, sender: nil)
+//        let navigation = UINavigationController(rootViewController: nextVC)
+//        self.show(navigation, sender: nil)
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     // MARK: - Table view data source
@@ -107,11 +109,11 @@ class ArticleTableViewController: UITableViewController {
         let height = (cell.articleImageView.image?.size.height)! * r
         
         let imageFrame = CGRect(x: 0, y: 0, width: width, height: height)
-        let labelFrme = CGRect(x: 0, y: 0, width: width - 32, height: textFontSize)
+        let labelFrame = CGRect(x: 0, y: 0, width: width - 32, height: textFontSize)
         
         cell.articleImageView.frame = imageFrame
         cell.authorImageView.frame = CGRect(x: 0, y: 0, width: 50.0, height: 50.0)
-        cell.articleLabel.frame = labelFrme
+        cell.articleLabel.frame = labelFrame
         
         
         cell.likeImageView.addGestureRecognizer(cell.likeTap)

@@ -40,9 +40,6 @@ class MessageBoardViewController: UIViewController {
         }
     }
     
-    @IBAction func backBarButton(_ sender: UIBarButtonItem) {
-        dismiss(animated: true)
-    }
     
     @IBAction func sendMessageBtnPressed(_ sender: UIButton) {
         sendMessage()
