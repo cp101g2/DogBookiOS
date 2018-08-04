@@ -56,15 +56,24 @@ class FriendPageSwitchViewController: UIViewController {
         
         switch switchPageControl.selectedSegmentIndex {
         case 0:
-            friendView.addSubview(friendListVC.view)
+         
+            self.friendView.addSubview(friendListVC.view)
         case 1:
+       
             friendView.addSubview(searchVC.view)
+            
         case 2:
+           
             friendView.addSubview(pairVC.view)
+            
         case 3:
+          
             friendView.addSubview(addListVC.view)
+            
         default:
+
             friendView.addSubview(friendListVC.view)
+            
         }        
     }
     

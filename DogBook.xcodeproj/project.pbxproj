@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		183482F22115863300795C2F /* 08_heart-2-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 183482F12115863300795C2F /* 08_heart-2-512.png */; };
+		183482F42115863E00795C2F /* paw_print-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 183482F32115863E00795C2F /* paw_print-512.png */; };
 		183561E9210FF7AA00489685 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 183561E8210FF7AA00489685 /* female.png */; };
 		183561EB210FFA2A00489685 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 183561EA210FFA2900489685 /* male.png */; };
 		183562252110360600489685 /* pairBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 183562242110360600489685 /* pairBackground.jpg */; };
@@ -52,6 +54,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		183482F12115863300795C2F /* 08_heart-2-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "08_heart-2-512.png"; sourceTree = "<group>"; };
+		183482F32115863E00795C2F /* paw_print-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paw_print-512.png"; sourceTree = "<group>"; };
 		183561E8210FF7AA00489685 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female.png; sourceTree = "<group>"; };
 		183561EA210FFA2900489685 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
 		183562242110360600489685 /* pairBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pairBackground.jpg; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 				1878FB3A210AB98E00715BB0 /* AddListTableViewController.swift */,
 				1878FB3E210AD0BC00715BB0 /* AddListTableViewCell.swift */,
 				188B35B22107591000458C80 /* PairViewController.swift */,
+				183482F32115863E00795C2F /* paw_print-512.png */,
+				183482F12115863300795C2F /* 08_heart-2-512.png */,
 				183562242110360600489685 /* pairBackground.jpg */,
 				183561E8210FF7AA00489685 /* female.png */,
 				183561EA210FFA2900489685 /* male.png */,
@@ -292,7 +298,9 @@
 				DEF02C9E20FF597F0013DB8D /* dog02.jpg in Resources */,
 				183562252110360600489685 /* pairBackground.jpg in Resources */,
 				DE6D4F6020EF3696003ECCC6 /* LaunchScreen.storyboard in Resources */,
+				183482F22115863300795C2F /* 08_heart-2-512.png in Resources */,
 				183561EB210FFA2A00489685 /* male.png in Resources */,
+				183482F42115863E00795C2F /* paw_print-512.png in Resources */,
 				DE4DD09F2105A35F00DE8587 /* ArticleStoryboard.storyboard in Resources */,
 				DE4DD0A32105A8AD00DE8587 /* LoginStoryboard.storyboard in Resources */,
 				DEEAA714210728980010B0BE /* FriendStoryboard.storyboard in Resources */,

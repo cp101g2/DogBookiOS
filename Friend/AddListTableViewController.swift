@@ -21,13 +21,29 @@ class AddListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//       NotificationCenter.default.addObserver(self, selector: #selector(reloadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+//
+        
         addFriendId = []
         addFriendInfoDictionary = [:]
         addFriendImageDictionary = [:]
         downloadCheckList()
       
     }
+    
+//    //加了好友後刷新
+//    @objc
+//    func reloadList() {
+//        
+//        
+//        addFriendId = []
+//        addFriendInfoDictionary = [:]
+//        addFriendImageDictionary = [:]
+//        downloadCheckList()
+//        
+//    }
 
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -56,15 +72,24 @@ class AddListTableViewController: UITableViewController {
        //         Configure the cell...
         
         let addFriendId = self.addFriendId[indexPath.row]
-        let dog = self.addFriendInfoDictionary[addFriendId]
         let image = self.addFriendImageDictionary[addFriendId]
-        cell.nameLabel.text = dog?.name
-        cell.ageLabel.text = String(format: "%01d", (dog?.age)!) + "歲"
-        cell.genderLabel.text = dog?.gender
-        cell.varietyLabel.text = dog?.variety
+        
+        guard let dog = self.addFriendInfoDictionary[addFriendId] else {
+            return UITableViewCell()
+        }
+        cell.nameLabel.text = dog.name
+        cell.ageLabel.text = String(format: "%01d", (dog.age)!) + "歲"
+   
+        cell.varietyLabel.text = dog.variety
         cell.friendImageView.image = image
+        
+        if dog.gender == "女" {
+            cell.genderImageView.image = UIImage(named: "female")
+        } else if dog.gender == "男" {
+            cell.genderImageView.image =  UIImage(named: "male")
+        }
 //
-        cell.addConfirmedBtn.tag = (dog?.dogId)!
+        cell.addConfirmedBtn.tag = dog.dogId!
         cell.addConfirmedBtn.addTarget(self, action: #selector(addFriendConfirmed), for: UIControlEvents.touchUpInside)
         return cell
     }
@@ -184,6 +209,10 @@ class AddListTableViewController: UITableViewController {
     @objc
     func addFriendConfirmed (sender: UIButton) {
     
+       
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+        
         deleteFriendFromChecklist(dogId: sender.tag)
         addFriendtoRelationship(dogId: sender.tag)
         sender.isUserInteractionEnabled = false
@@ -192,6 +221,10 @@ class AddListTableViewController: UITableViewController {
         sender.setTitle("已同意", for: .normal)
         tableView.reloadData()
     }
+    
+    
+
+    
     
     
     func deleteFriendFromChecklist (dogId: Int) {

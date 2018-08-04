@@ -31,8 +31,24 @@ class FriendSearchViewController: UIViewController, UITableViewDelegate, UITable
         
         alterLayout() //固定search bar
         
+//         NotificationCenter.default.addObserver(self, selector: #selector(reloadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        
         // Do any additional setup after loading the view.
     }
+    
+    //加了好友後刷新
+//    @objc
+//    func reloadList() {
+//        
+//        self.AllUserInfoDictionary = [:]
+//        self.currentAllUserInfoDictionary = [:]
+//  
+//        downloadAllUserIdList()
+//        getFriendIdList()
+//        self.tableView.reloadData()
+//    }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -60,19 +76,30 @@ class FriendSearchViewController: UIViewController, UITableViewDelegate, UITable
         
         let AllUserId = self.AllUserId[indexPath.row]
         
-        let friend = self.currentAllUserInfoDictionary[AllUserId]
+       
         
         let image = self.allUserImageDictionary[AllUserId]
      
+        guard let friend = self.currentAllUserInfoDictionary[AllUserId] else {
         
-        cell.nameLabel.text = friend?.name
-        cell.ageLabel.text = String(format: "%01d", (friend?.age)!) + "歲"
-        cell.genderLabel.text = friend?.gender
-        cell.varietyLabel.text = friend?.variety
+            return UITableViewCell()
+        }
+        
+        cell.nameLabel.text = friend.name
+        cell.ageLabel.text = String(format: "%01d", (friend.age)!) + "歲"
+      
+        cell.varietyLabel.text = friend.variety
         
         cell.friendImageView.image = image
         
-        cell.addFriendBtn.tag = (friend?.dogId)!
+        if friend.gender == "女" {
+            cell.genderImageView.image = UIImage(named: "female")
+        } else if friend.gender == "男" {
+            cell.genderImageView.image =  UIImage(named: "male")
+        }
+        
+        
+        cell.addFriendBtn.tag = (friend.dogId)!
         
         cell.currentAllUserInfoDictionary = self.currentAllUserInfoDictionary
       
@@ -172,6 +199,8 @@ class FriendSearchViewController: UIViewController, UITableViewDelegate, UITable
                     self.AllUserId.remove(at: index)
                 }
             }
+            
+            self.currentAllUserInfoDictionary.removeValue(forKey: UserDefaults.standard.integer(forKey: "dogId"))
             self.tableView.reloadData()
             
         }
@@ -294,12 +323,14 @@ class FriendSearchViewController: UIViewController, UITableViewDelegate, UITable
    @objc
     func addBtnPressed(sender: UIButton){
     
+//     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+    
     addFriend(inviteDogId: sender.tag)
     //Button 不能按 灰色 透明度 改文字
     sender.isUserInteractionEnabled = false
     sender.tintColor = UIColor.gray
     sender.alpha = 0.4
-    sender.setTitle("已加入", for: .normal)
+    sender.setTitle("已邀請", for: .normal)
     }
  
 
