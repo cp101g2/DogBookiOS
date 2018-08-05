@@ -31,6 +31,7 @@ class ArticleTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         dogId = UserDefaults.standard.integer(forKey: "dogId")
+        tabBarController?.tabBar.isHidden = false
         articles = []
         articleImages = [:]
         authorImages = [:]
@@ -130,6 +131,9 @@ class ArticleTableViewController: UITableViewController {
         }
         return articles.count
     }
+    
+    
+    // MARK :- data remote
 
     
     func getArticles(){

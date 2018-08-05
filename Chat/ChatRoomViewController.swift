@@ -28,6 +28,7 @@ class ChatRoomViewController: UIViewController {
     var imageHeight : CGFloat = 0
     var messageBottomConstraint : NSLayoutConstraint?
     var sendButtonBottomConstraint : NSLayoutConstraint?
+    
     var isBottom = false
     override func viewDidLoad() {
         super.viewDidLoad()

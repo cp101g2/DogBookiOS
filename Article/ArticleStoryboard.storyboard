@@ -100,6 +100,7 @@
                     <navigationItem key="navigationItem" title="留言" id="8Ac-BC-Vv5"/>
                     <connections>
                         <outlet property="messageInput" destination="k4E-6X-fEg" id="MYN-PC-7D2"/>
+                        <outlet property="sendMessageButton" destination="2hy-7R-wmN" id="j1z-Lm-Irn"/>
                         <outlet property="tableView" destination="qum-bj-ByS" id="EOd-sz-iZC"/>
                     </connections>
                 </viewController>

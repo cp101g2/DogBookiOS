@@ -13,6 +13,7 @@ class MessageBoardViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageInput: UITextField!
+    @IBOutlet weak var sendMessageButton: UIButton!
     
     let communicator = Communicator()
     var messages = [Message]()
@@ -21,14 +22,27 @@ class MessageBoardViewController: UIViewController {
     var articleId = -1
     var imageHeight : CGFloat! = 0
     var contentHeight : CGFloat! = 0
+    var messageBottomConstraint : NSLayoutConstraint?
+    var sendButtonBottomConstraint : NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorStyle = .singleLine
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        tabBarController?.tabBar.isHidden = true
+        
+        messageBottomConstraint = NSLayoutConstraint(item: messageInput, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        
+        sendButtonBottomConstraint = NSLayoutConstraint(item: sendMessageButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        
+        view.addConstraint(messageBottomConstraint!)
+        view.addConstraint(sendButtonBottomConstraint!)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotificaion), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotificaion), name: Notification.Name.UIKeyboardWillHide, object: nil)
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         getMessages()
@@ -45,14 +59,30 @@ class MessageBoardViewController: UIViewController {
         sendMessage()
     }
     
-//    @objc
-//    func keyboardWillShow(notification:Notification) {
-//
-//    }
-//    @objc
-//    func keyboardWillHide(notification:Notification) {
-//
-//    }
+    // MARK :- keyboard
+    
+    @objc
+    func handleKeyboardNotificaion(notification:NSNotification){
+        if let userInfo = notification.userInfo {
+            let keybaordFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as! CGRect
+            let isKeyboardshowing = notification.name
+            
+            if isKeyboardshowing == Notification.Name.UIKeyboardWillShow {
+                messageBottomConstraint?.constant = -keybaordFrame.height
+                sendButtonBottomConstraint?.constant = -keybaordFrame.height
+            } else {
+                messageBottomConstraint?.constant = 0
+                sendButtonBottomConstraint?.constant = 0
+            }
+            
+            UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                self.view.layoutIfNeeded()
+            }) { (completed) in
+                
+            }
+            
+        }
+    }
     
     
     
@@ -199,6 +229,10 @@ extension MessageBoardViewController : UITableViewDataSource,UITableViewDelegate
         self.imageHeight = cell.friendImageView.frame.size.height
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        messageInput.endEditing(true)
     }
     
 }
