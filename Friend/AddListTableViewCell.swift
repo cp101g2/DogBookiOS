@@ -15,6 +15,9 @@ class AddListTableViewCell: UITableViewCell {
     @IBOutlet weak var varietyLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var friendImageView: UIImageView!
+    
+    @IBOutlet weak var genderImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

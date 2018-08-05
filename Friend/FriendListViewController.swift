@@ -9,33 +9,47 @@
 import UIKit
 
 class FriendListViewController: UIViewController,  UITableViewDelegate, UISearchBarDelegate, UITableViewDataSource {
-
+    
     let communicator = Communicator()
     
     var friendId : [Int] = []
     
-
+    
     
     var friendInfoDictionary = [Int:Dog]()
     var currentFriendInfoDictionary = [Int:Dog]()
     var friendImageDictionary = [Int:UIImage]()
     
-   
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameSearchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        
+        tableView.reloadData()
         tableView.delegate = self
         tableView.dataSource = self
         nameSearchBar.delegate = self
         getFriendIdList()
-         //固定search bar
+        //固定search bar
         alterLayout()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
+    //加了好友後刷新
+    @objc
+    func reloadList() {
+        
+        print("接收成功")
+        currentFriendInfoDictionary = [:]
+        getFriendIdList()
+        self.tableView.reloadData()
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -58,29 +72,32 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
         }
         
         let friendId = self.friendId[indexPath.row]
-        let friend = self.currentFriendInfoDictionary[friendId]
         let image = self.friendImageDictionary[friendId]
-
-        cell.nameLabel.text = friend?.name
-                cell.ageLabel.text = String(format: "%01d", (friend?.age)!) + "歲"
-       
-        cell.varietyLabel.text = friend?.variety
+        
+        guard let friend = self.currentFriendInfoDictionary[friendId] else {
+            return UITableViewCell()
+        }
+        
+        
+        cell.nameLabel.text = friend.name
+        cell.ageLabel.text = String(format: "%01d", (friend.age)!) + "歲"
+        
+        cell.varietyLabel.text = friend.variety
         cell.friendImageView.image = image
-        if friend?.gender == "女" {
+        if friend.gender == "女" {
             cell.genderImageView.image = UIImage(named: "female")
-        } else if friend?.gender == "男" {
+        } else if friend.gender == "男" {
             cell.genderImageView.image =  UIImage(named: "male")
         }
-       
-     
-      
+        
+        
         cell.friendImageView.layer.cornerRadius = cell.friendImageView.bounds.width/2
         cell.friendImageBorderView.layer.borderWidth = 2
         cell.friendImageBorderView.layer.cornerRadius = cell.friendImageBorderView.bounds.width/2
         
         return cell
     }
-
+    
     
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -96,6 +113,8 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
         tableView.tableHeaderView = UIView()
         //        friendListTableView.estimatedSectionHeaderHeight = 40
     }
+    
+    
     //searchBar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty else{
@@ -103,7 +122,7 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
             getFriendIdList()
             return
         }
-
+        
         currentFriendInfoDictionary = friendInfoDictionary.filter({ friend -> Bool in
             (friend.value.name?.lowercased().contains(searchText.lowercased()))!
         })
@@ -114,29 +133,28 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
         for friend in self.friendInfoDictionary {
             self.friendId.append(friend.key)
         }
-      
         print("搜尋結果\(currentFriendInfoDictionary)")
         tableView.reloadData()
         
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     func getFriendIdList() {
         self.friendId = []
         // 準備將資料轉為JSON
         let dogId = UserDefaults.standard.integer(forKey: "dogId")
         let action = GetMyFriendList(action: GET_FRIEND_INFO, dogId: dogId)
-       
+        
         // 準備將資料轉為JSON
         let encoder = JSONEncoder()
         encoder.outputFormatting = .init()
@@ -165,7 +183,7 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                print("\(self.friendId.count)")
+                
             }
         }
     }
@@ -197,15 +215,26 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
             
             output.dogId = dogId
             self.friendId.append(dogId)
-        
+            
             self.friendInfoDictionary[dogId] = output
             self.currentFriendInfoDictionary[dogId] = output
+            
+            self.friendInfoDictionary.removeValue(forKey: UserDefaults.standard.integer(forKey: "dogId"))
+            self.currentFriendInfoDictionary.removeValue(forKey: UserDefaults.standard.integer(forKey: "dogId"))
+            if let index = self.friendId.index(of: UserDefaults.standard.integer(forKey: "dogId")) {
+                self.friendId.remove(at: index)
+            }
+            
+          
             
             self.tableView.reloadData()
         }
         
+     
+        
+        
     }
- 
+    
     
     
     func getFriendImage(dogId: Int){
@@ -232,9 +261,9 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
             }
             self.friendImageDictionary[dogId] = image
             self.tableView.reloadData()
-
+            
         }
     }
-
-
+    
+    
 }
