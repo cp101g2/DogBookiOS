@@ -1,19 +1,18 @@
 //
-//  MessageBoardViewController.swift
+//  MyArticleViewController.swift
 //  DogBook
 //
-//  Created by 李一正 on 2018/7/29.
+//  Created by 李一正 on 2018/8/5.
 //  Copyright © 2018年 lee. All rights reserved.
 //
 
 import UIKit
 
-class MessageBoardViewController: UIViewController {
-    
-    
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var messageInput: UITextField!
-    @IBOutlet weak var sendMessageButton: UIButton!
+class MyArticleViewController: UIViewController {
+
+    @IBOutlet weak var myArticleTableView: UITableView!
+    @IBOutlet weak var myMessageInputField: UITextField!
+    @IBOutlet weak var myMessageSendBtn: UIButton!
     
     let communicator = Communicator()
     var messages = [Message]()
@@ -24,16 +23,21 @@ class MessageBoardViewController: UIViewController {
     var contentHeight : CGFloat! = 0
     var messageBottomConstraint : NSLayoutConstraint?
     var sendButtonBottomConstraint : NSLayoutConstraint?
+    var likeCount = 0
+    var myProfileImage : UIImage!
+    var articlImage : UIImage!
+    var article : Article!
+    var myDog : Dog!
+    let data = [0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.separatorStyle = .singleLine
+        myArticleTableView.delegate = self
+        articleId = article.articleId!
         
-        tabBarController?.tabBar.isHidden = true
+        messageBottomConstraint = NSLayoutConstraint(item: myMessageInputField, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -10)
         
-        messageBottomConstraint = NSLayoutConstraint(item: messageInput, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
-        
-        sendButtonBottomConstraint = NSLayoutConstraint(item: sendMessageButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        sendButtonBottomConstraint = NSLayoutConstraint(item: myMessageSendBtn, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -10)
         
         view.addConstraint(messageBottomConstraint!)
         view.addConstraint(sendButtonBottomConstraint!)
@@ -41,24 +45,17 @@ class MessageBoardViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotificaion), name: Notification.Name.UIKeyboardWillShow, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotificaion), name: Notification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        getMessages()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if articleId == -1 {
-            return
-        }
+        tabBarController?.tabBar.isHidden = true
+        getMessages()
+        getLikeCount(articleId:articleId)
     }
-    
-    
-    @IBAction func sendMessageBtnPressed(_ sender: UIButton) {
+    @IBAction func sendMyMessage(_ sender: UIButton) {
         sendMessage()
     }
-    
     // MARK :- keyboard
     
     @objc
@@ -84,8 +81,7 @@ class MessageBoardViewController: UIViewController {
         }
     }
     
-    
-    
+    // MARK :- get remote data
     func getMessages(){
         var data = [String:Any]()
         data["status"] = GET_MESSAGE_BOARD
@@ -105,7 +101,6 @@ class MessageBoardViewController: UIViewController {
                 self.getFriendInfo(dogId: message.dogId!)
                 self.getFriendImage(dogId: message.dogId!)
             }
-            
         }
     }
     
@@ -154,20 +149,43 @@ class MessageBoardViewController: UIViewController {
             }
             
             self.friendImages[dogId] = image
-            self.tableView.reloadData()
+            self.myArticleTableView.reloadData()
+        }
+    }
+    
+    func getLikeCount(articleId: Int){
+        
+        var data = [String:Any]()
+        data["status"] = GET_LIKE_COUNT
+        data["articleId"] = articleId
+        
+        communicator.doPost(url: ArticleServlet, data: data) { (result) in
+            
+            guard let result = result else {
+                return
+            }
+            
+            guard let output = try? JSONSerialization.jsonObject(with: result, options: []) as! [String:Int] else {
+                return
+            }
+            
+            guard let count = output["likeCount"] else {
+                return
+            }
+            self.likeCount = count
+            
         }
         
     }
-    
     func sendMessage(){
         let dogId = UserDefaults.standard.integer(forKey: "dogId")
         
-        guard let content = messageInput.text else {
+        guard let content = myMessageInputField.text else {
             return
         }
         let message = Message(id: nil, dogId: dogId, articleId: articleId, content: content)
         
-        messageInput.text = ""
+        myMessageInputField.text = ""
         
         guard let uploadData = try? JSONEncoder().encode(message) else{
             return
@@ -192,47 +210,67 @@ class MessageBoardViewController: UIViewController {
             
         }
     }
-    
-
 }
-extension MessageBoardViewController : UITableViewDataSource,UITableViewDelegate{
+extension MyArticleViewController : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var height : CGFloat!
-        if contentHeight == 0 || imageHeight == 0 {
-            return 0
-        }
-        if contentHeight > imageHeight {
-            height = contentHeight + 30 + 20
-            return height
-        } else {
-            height = imageHeight + 20
-            return height
-        }
+        return data.count + messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageBoardTableViewCell
         
-        guard let dogId = messages[indexPath.row].dogId else {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as! MyArticleTableViewCell
+            
+            cell.myNameLabel.text = myDog.name!
+            cell.myProfileImageView.image = myProfileImage
+            cell.myArticleContentLabel.text = article.content
+            
+            let cellFrameWidth = cell.frame.size.width
+            
+            guard let articleImage = articlImage?.resize(willSetWidth: cellFrameWidth) else {
+                print("article get image or resize fail")
+                return cell
+            }
+            cell.myArticleImageView.image = articleImage
+            
+            let imageWidth = cell.myArticleImageView.image?.size.width
+            let r = self.view.frame.size.width / imageWidth!
+            
+            let width = self.view.frame.size.width
+            let height = (cell.myArticleImageView.image?.size.height)! * r
+            
+            let imageFrame = CGRect(x: 0, y: 0, width: width, height: height)
+            
+            cell.myProfileImageView.frame = imageFrame
+            
+            cell.myArticleLikeLabel.text = "\(likeCount) likes"
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! ArticleMessageTableViewCell
+            
+            let message = messages[indexPath.row-1]
+            guard let friendId = message.dogId else {
+                print("get friendId fail")
+                return cell
+            }
+            
+            cell.messagerImageView.image = friendImages[friendId]
+            cell.messagerNameLabel.text = friendNames[friendId]
+            cell.messagerContentLabel.text = message.content
+            
+            self.contentHeight = cell.messagerContentLabel.frame.size.height
+            self.imageHeight = cell.messagerImageView.frame.size.height
+            
+            
             return cell
         }
-        cell.friendNameLabel.text = friendNames[dogId]
-        cell.friendImageView.image = friendImages[dogId]
-        cell.messageContentLabel.text = messages[indexPath.row].content
         
-        self.contentHeight = cell.messageContentLabel.frame.size.height
-        self.imageHeight = cell.friendImageView.frame.size.height
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        messageInput.endEditing(true)
+        myMessageInputField.endEditing(true)
     }
+    
     
 }

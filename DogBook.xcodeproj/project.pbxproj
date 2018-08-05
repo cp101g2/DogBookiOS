@@ -49,6 +49,9 @@
 		DE6D4F5B20EF3695003ECCC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE6D4F5920EF3695003ECCC6 /* Main.storyboard */; };
 		DE6D4F5D20EF3696003ECCC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE6D4F5C20EF3696003ECCC6 /* Assets.xcassets */; };
 		DE6D4F6020EF3696003ECCC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE6D4F5E20EF3696003ECCC6 /* LaunchScreen.storyboard */; };
+		DED676B32116E0A200A5B2A6 /* MyArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED676B22116E0A200A5B2A6 /* MyArticleViewController.swift */; };
+		DED676B52116E0F900A5B2A6 /* MyArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED676B42116E0F900A5B2A6 /* MyArticleTableViewCell.swift */; };
+		DED676B72116E10900A5B2A6 /* ArticleMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED676B62116E10900A5B2A6 /* ArticleMessageTableViewCell.swift */; };
 		DED8DF5D2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8DF5C2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift */; };
 		DEEAA714210728980010B0BE /* FriendStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEEAA713210728980010B0BE /* FriendStoryboard.storyboard */; };
 		DEEAA71621084DEE0010B0BE /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEAA71521084DEE0010B0BE /* ArticleTableViewController.swift */; };
@@ -106,6 +109,9 @@
 		DE6D4F5C20EF3696003ECCC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE6D4F5F20EF3696003ECCC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE6D4F6120EF3696003ECCC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DED676B22116E0A200A5B2A6 /* MyArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyArticleViewController.swift; sourceTree = "<group>"; };
+		DED676B42116E0F900A5B2A6 /* MyArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyArticleTableViewCell.swift; sourceTree = "<group>"; };
+		DED676B62116E10900A5B2A6 /* ArticleMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleMessageTableViewCell.swift; sourceTree = "<group>"; };
 		DED8DF5C2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDogInfoCollectionReusableView.swift; sourceTree = "<group>"; };
 		DEEAA713210728980010B0BE /* FriendStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendStoryboard.storyboard; sourceTree = "<group>"; };
 		DEEAA71521084DEE0010B0BE /* ArticleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +183,9 @@
 				DE4DD08F21034E2500DE8587 /* InfoViewController.swift */,
 				DE4DD09A2105A1AF00DE8587 /* MyDogStoryboard.storyboard */,
 				DE4DD0A42105ACD800DE8587 /* AddDogViewController.swift */,
+				DED676B22116E0A200A5B2A6 /* MyArticleViewController.swift */,
+				DED676B42116E0F900A5B2A6 /* MyArticleTableViewCell.swift */,
+				DED676B62116E10900A5B2A6 /* ArticleMessageTableViewCell.swift */,
 			);
 			path = MyDog;
 			sourceTree = "<group>";
@@ -409,6 +418,7 @@
 				DE1B94F72112D43B0049197A /* ChatView.swift in Sources */,
 				DE60810B20FD9D7600FA16C1 /* Communicator.swift in Sources */,
 				DEFE3885211183FB00DAE4F0 /* ChatFriendTableViewController.swift in Sources */,
+				DED676B72116E10900A5B2A6 /* ArticleMessageTableViewCell.swift in Sources */,
 				DE60811320FD9EC900FA16C1 /* Default.swift in Sources */,
 				DE16CCAE210B07A4008FF04F /* UIImage+resize.swift in Sources */,
 				DE60811920FDC79400FA16C1 /* MyDogCollectionViewController.swift in Sources */,
@@ -430,12 +440,14 @@
 				DE4DD09021034E2500DE8587 /* InfoViewController.swift in Sources */,
 				18FD86382106FB520040441F /* FriendListViewController.swift in Sources */,
 				DE6D4F5620EF3695003ECCC6 /* AppDelegate.swift in Sources */,
+				DED676B52116E0F900A5B2A6 /* MyArticleTableViewCell.swift in Sources */,
 				DEEAA71621084DEE0010B0BE /* ArticleTableViewController.swift in Sources */,
 				DEFE388B21119E7C00DAE4F0 /* ChatRoomTableViewCell.swift in Sources */,
 				DE16CCB2210C20C7008FF04F /* AddArticleViewController.swift in Sources */,
 				DEFE38832111806C00DAE4F0 /* ChatWebsocketClient.swift in Sources */,
 				DE60811120FD9E7200FA16C1 /* DataModel.swift in Sources */,
 				DE4DD0A52105ACD800DE8587 /* AddDogViewController.swift in Sources */,
+				DED676B32116E0A200A5B2A6 /* MyArticleViewController.swift in Sources */,
 				DE60811D20FDC94D00FA16C1 /* MyDogImageCollectionViewCell.swift in Sources */,
 				DEFE388921119E6500DAE4F0 /* ChatRoomViewController.swift in Sources */,
 			);

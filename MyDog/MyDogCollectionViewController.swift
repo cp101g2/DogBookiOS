@@ -29,6 +29,7 @@ class MyDogCollectionViewController: UICollectionViewController {
     var dogInfo : String?
     var profileImage : UIImage?
     var backgroundImage : UIImage?
+    var meter : Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,8 @@ class MyDogCollectionViewController: UICollectionViewController {
         myDogLayout.itemSize = CGSize(width: width , height: width)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
         isLogin = UserDefaults.standard.bool(forKey: "isLogin")
         dogId = UserDefaults.standard.integer(forKey: "dogId")
         if !isLogin{
@@ -53,11 +55,12 @@ class MyDogCollectionViewController: UICollectionViewController {
         } else if isLogin , dogId != -1{
             getMyDog()
             getMyArticles()
+            getMeter()
             print("showLoginPage 已經登入了 \(dogId)")
             collectionView?.reloadData()
         }
     }
-
+    
     @IBAction func unwindSegue(_ sender: UIStoryboardSegue){}
     
     // MARK: UICollectionViewDataSource
@@ -89,18 +92,12 @@ class MyDogCollectionViewController: UICollectionViewController {
                      key: "dogId", id: dogId, imageSize: 150,
                      outsideImageView: header.backgroundImageView)
             
-//            media?.getImage(GET_PROFILE_PHOTO,
-//                            header.profileImageView,
-//                            Key.dogId.rawValue,
-//                            id: dogId, imageSize: 150)
-//
-//            media?.getImage(GET_PROFILE_BACKGROUND_PHOTO,
-//                            header.backgroundImageView,
-//                            Key.dogId.rawValue,
-//                            id: dogId, imageSize: 150)
-            
-            
             header.infoLabel.text = dogInfo
+            guard let meter = meter else {
+                return header
+            }
+            
+            header.meterLabel.text = "\(String(format: "%.1f", meter)) 公尺"
         }
         return header
     }
@@ -125,6 +122,19 @@ class MyDogCollectionViewController: UICollectionViewController {
         cell.articleImageView.image = image
         
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        let nextVC = UIStoryboard(name: "MyDogStoryboard", bundle: nil).instantiateViewController(withIdentifier: "myArticle") as! MyArticleViewController
+        let article = myArticles[indexPath.row]
+        
+        nextVC.myDog = dog!
+        nextVC.myProfileImage = profileImage
+        nextVC.article = article
+        nextVC.articlImage = articleImage[article.articleId!]
+        
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @objc
@@ -287,6 +297,29 @@ class MyDogCollectionViewController: UICollectionViewController {
             self.collectionView?.reloadData()
         }
 
+    }
+    
+    func getMeter(){
+        var data = [String:Any]()
+        data["status"] = GET_METER
+        data["dogId"] = dogId
+        
+        communicator.doPost(url: DogServlet, data: data) { (result) in
+            guard let result = result else {
+                return
+            }
+            print(result)
+            
+            guard let output = try? JSONSerialization.jsonObject(with: result, options: []) as? [String:Double] else {
+                print("cast fail")
+                return
+            }
+            guard let meter = output!["meter"] else {
+                return
+            }
+            self.meter = meter
+            
+        }
     }
     
 }

@@ -109,11 +109,11 @@ class ChatRoomViewController: UIViewController {
             let isKeyboardshowing = notification.name
             
             if isKeyboardshowing == Notification.Name.UIKeyboardWillShow {
-                messageBottomConstraint?.constant = -keybaordFrame.height
-                sendButtonBottomConstraint?.constant = -keybaordFrame.height
+                messageBottomConstraint?.constant = -keybaordFrame.height-10
+                sendButtonBottomConstraint?.constant = -keybaordFrame.height-10
             } else {
-                messageBottomConstraint?.constant = 0
-                sendButtonBottomConstraint?.constant = 0
+                messageBottomConstraint?.constant = -10
+                sendButtonBottomConstraint?.constant = -10
             }
             
             UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
