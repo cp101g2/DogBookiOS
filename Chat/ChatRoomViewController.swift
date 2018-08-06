@@ -39,9 +39,9 @@ class ChatRoomViewController: UIViewController {
         roomTitle.title = "\(friend.name!)"
         getChatsRecording(roomId: room.roomId!)
         
-        messageBottomConstraint = NSLayoutConstraint(item: messageInputField, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        messageBottomConstraint = NSLayoutConstraint(item: messageInputField, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -10)
         
-        sendButtonBottomConstraint = NSLayoutConstraint(item: sendButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        sendButtonBottomConstraint = NSLayoutConstraint(item: sendButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -10)
         
         view.addConstraint(messageBottomConstraint!)
         view.addConstraint(sendButtonBottomConstraint!)

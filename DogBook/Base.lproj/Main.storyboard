@@ -63,7 +63,7 @@
         <scene sceneID="vHi-9D-dC0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o0z-hf-LDb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的狗" id="Z22-rI-5av"/>
+                    <tabBarItem key="tabBarItem" title="我的狗" image="pets_black_24pt" id="Z22-rI-5av"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zAq-NM-ju5">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -149,5 +149,6 @@
     <resources>
         <image name="chat_black" width="24" height="24"/>
         <image name="dashboard_black" width="24" height="24"/>
+        <image name="pets_black_24pt" width="24" height="24"/>
     </resources>
 </document>

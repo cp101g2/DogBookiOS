@@ -31,9 +31,9 @@ class MessageBoardViewController: UIViewController {
         
         tabBarController?.tabBar.isHidden = true
         
-        messageBottomConstraint = NSLayoutConstraint(item: messageInput, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        messageBottomConstraint = NSLayoutConstraint(item: messageInput, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -10)
         
-        sendButtonBottomConstraint = NSLayoutConstraint(item: sendMessageButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        sendButtonBottomConstraint = NSLayoutConstraint(item: sendMessageButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -10)
         
         view.addConstraint(messageBottomConstraint!)
         view.addConstraint(sendButtonBottomConstraint!)

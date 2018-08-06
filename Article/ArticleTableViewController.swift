@@ -47,7 +47,7 @@ class ArticleTableViewController: UITableViewController {
         print(sender.tag)
         let nextVC = UIStoryboard(name: "ArticleStoryboard", bundle: nil).instantiateViewController(withIdentifier: "messageBoard") as! MessageBoardViewController
         nextVC.articleId = sender.tag
-
+        print("這這",self.navigationController)
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
@@ -184,9 +184,10 @@ class ArticleTableViewController: UITableViewController {
             self.authorNames[dogId] = name
             self.getAuthorImage(dogId: dogId)
             if self.articleImages.count == self.articles?.count {
-                print("有哦")
                 self.tableView.reloadData()
-            }        }
+            }
+            
+        }
         
         
     }
@@ -197,6 +198,25 @@ class ArticleTableViewController: UITableViewController {
         data["status"] = GET_PROFILE_PHOTO
         data["dogId"] = dogId
         data["imageSize"] = 50
+        
+        let cacheId = "dogId\(dogId)"
+        // Check if we should use file from cache directly
+        let filename = String(format: "Cache_%ld", cacheId.hashValue)
+        
+        guard let cachesURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {
+            return
+        }
+        let fullFileURL = cachesURL.appendingPathComponent(filename)
+//        print("Caches: \(cachesURL)")
+        
+        if let image = UIImage(contentsOfFile: fullFileURL.path) {
+            // Exist cache file , let's use it and return immediately.
+            self.authorImages[dogId] = image
+            print("有")
+            self.tableView.reloadData()
+            return
+        }
+        
         
         communicator.doPost(url: MediaServlet, data: data) { (result) in
             guard let result = result else {
@@ -210,9 +230,9 @@ class ArticleTableViewController: UITableViewController {
             
             self.authorImages[dogId] = image
             if self.articleImages.count == self.articles?.count {
-                print("有哦")
                 self.tableView.reloadData()
-            }        }
+            }
+        }
         
     }
     
@@ -222,6 +242,25 @@ class ArticleTableViewController: UITableViewController {
         data["status"] = GET_ARTICLES
         data["mediaId"] = mediaId
         data["imageSize"] = UIScreen.main.nativeBounds.width
+        
+        let cacheId = "Article\(mediaId)"
+        // Check if we should use file from cache directly
+        let filename = String(format: "Cache_%ld", cacheId.hashValue)
+        
+        guard let cachesURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {
+            return
+        }
+        let fullFileURL = cachesURL.appendingPathComponent(filename)
+//        print("Caches: \(cachesURL)")
+        
+        if let image = UIImage(contentsOfFile: fullFileURL.path) {
+            // Exist cache file , let's use it and return immediately.
+            self.articleImages[articleId] = image
+            self.tableView.reloadData()
+            return
+        }
+        
+        
         // 送資料 and 解析回傳的JSON資料
         communicator.doPost(url: MediaServlet, data: data) { (result) in
             guard let result = result else {
@@ -234,13 +273,12 @@ class ArticleTableViewController: UITableViewController {
             }
             
             self.articleImages[articleId] = image
-            print(self.articleImages.count)
+//            print(self.articleImages.count)
             if self.articleImages.count == self.articles?.count {
-                print("有哦")
+                
                 self.tableView.reloadData()
             }
         }
-        
     }
     
     func getLikeCount(articleId: Int){
@@ -284,7 +322,6 @@ class ArticleTableViewController: UITableViewController {
             let isLike = output!["isLike"]
             self.isLike[articleId] = isLike
             if self.articleImages.count == self.articles?.count {
-                print("有哦")
                 self.tableView.reloadData()
             }
         }

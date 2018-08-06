@@ -307,7 +307,9 @@
                             <outlet property="delegate" destination="RFA-4t-Pnt" id="n0i-Ey-DNM"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="我的狗" id="D9T-7L-hhP"/>
+                    <navigationItem key="navigationItem" title="我的狗" id="D9T-7L-hhP">
+                        <barButtonItem key="rightBarButtonItem" image="event_available_black_24pt" id="HTb-Wh-eU7"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="myDogCollectionView" destination="8ft-dq-9r8" id="dEc-Fx-qXi"/>
                         <outlet property="myDogLayout" destination="Jg9-Ya-HzW" id="VMr-WQ-rss"/>
@@ -541,6 +543,7 @@
         <image name="add_circle_black" width="48" height="48"/>
         <image name="camera_alt_white" width="24" height="24"/>
         <image name="directions_walk_black_48pt" width="48" height="48"/>
+        <image name="event_available_black_24pt" width="24" height="24"/>
         <image name="exit_to_app_black_48pt" width="48" height="48"/>
         <image name="mood_black_48pt" width="48" height="48"/>
         <image name="send_black_24pt" width="24" height="24"/>
