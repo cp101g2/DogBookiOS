@@ -97,15 +97,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VJY-Ia-aaL"/>
                     </view>
-                    <navigationItem key="navigationItem" title="留言" id="8Ac-BC-Vv5">
-                        <barButtonItem key="leftBarButtonItem" image="clear_black_24pt" id="cVU-KM-P68">
-                            <connections>
-                                <action selector="backBarButton:" destination="Al0-67-4By" id="g2l-Er-351"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="留言" id="8Ac-BC-Vv5"/>
                     <connections>
                         <outlet property="messageInput" destination="k4E-6X-fEg" id="MYN-PC-7D2"/>
+                        <outlet property="sendMessageButton" destination="2hy-7R-wmN" id="j1z-Lm-Irn"/>
                         <outlet property="tableView" destination="qum-bj-ByS" id="EOd-sz-iZC"/>
                     </connections>
                 </viewController>
@@ -287,7 +282,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="clear_black_24pt" width="24" height="24"/>
         <image name="favorite_border_black_24pt" width="12" height="12"/>
         <image name="photo_filter_black_24pt" width="24" height="24"/>
         <image name="send_black_24pt" width="24" height="24"/>

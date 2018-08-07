@@ -13,13 +13,13 @@
         <!--ChatroomPage-->
         <scene sceneID="RyU-N0-pzU">
             <objects>
-                <tableViewController storyboardIdentifier="Chat" title="ChatroomPage" id="rNA-mF-XYo" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Chat" title="ChatroomPage" id="rNA-mF-XYo" customClass="ChatFriendTableViewController" customModule="DogBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BVw-M7-6Lg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="76" id="6NM-SO-dGm">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ChatFriend" rowHeight="76" id="6NM-SO-dGm" customClass="ChatFriendTableViewCell" customModule="DogBook" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="76"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6NM-SO-dGm" id="xAt-vm-Ucy">
@@ -29,16 +29,22 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9pM-M7-rsx">
                                             <rect key="frame" x="16" y="12" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="25"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmC-mQ-8m8">
-                                            <rect key="frame" x="74" y="27" width="68" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmC-mQ-8m8">
+                                            <rect key="frame" x="74" y="12" width="68" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dG2-Ox-XkY">
-                                            <rect key="frame" x="150" y="27" width="209" height="21"/>
+                                            <rect key="frame" x="74" y="41" width="259" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -47,6 +53,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="chatFriendImageView" destination="9pM-M7-rsx" id="Aeh-fM-lyF"/>
+                                    <outlet property="chatFriendNameLabel" destination="UmC-mQ-8m8" id="PeV-Dm-hWy"/>
+                                    <outlet property="lastChatLabel" destination="dG2-Ox-XkY" id="5X4-cE-aDk"/>
                                     <segue destination="0w8-Hd-S6I" kind="show" id="ZrH-Aq-dWi"/>
                                 </connections>
                             </tableViewCell>
@@ -60,23 +69,82 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UmH-de-yxZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2991" y="328"/>
+            <point key="canvasLocation" x="2989.5999999999999" y="327.88605697151428"/>
         </scene>
         <!--Title-->
         <scene sceneID="DD0-BA-Ajm">
             <objects>
-                <viewController id="0w8-Hd-S6I" sceneMemberID="viewController">
+                <viewController id="0w8-Hd-S6I" customClass="ChatRoomViewController" customModule="DogBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mjl-6q-TBd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WpE-iZ-Gm2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="0.1271671660958904" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="56" id="yuo-zx-irT" customClass="ChatRoomTableViewCell" customModule="DogBook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="56"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yuo-zx-irT" id="kMv-2Y-MOy">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="0w8-Hd-S6I" id="a92-wy-b4F"/>
+                                    <outlet property="delegate" destination="0w8-Hd-S6I" id="nNO-Ic-UP7"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dpj-BA-gqp">
+                                <rect key="frame" x="334" y="630" width="32" height="30"/>
+                                <state key="normal" image="send_black_24pt"/>
+                                <connections>
+                                    <action selector="sendMessageButtonPressed:" destination="0w8-Hd-S6I" eventType="touchUpInside" id="yhf-bg-hW4"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UXK-5k-IID">
+                                <rect key="frame" x="8" y="630" width="318" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="318" id="9ky-w1-UPW"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3wN-YU-mgf" firstAttribute="bottom" secondItem="UXK-5k-IID" secondAttribute="bottom" constant="7" id="3jw-wa-U58"/>
+                            <constraint firstItem="UXK-5k-IID" firstAttribute="leading" secondItem="3wN-YU-mgf" secondAttribute="leading" constant="8" id="BQd-qm-3GL"/>
+                            <constraint firstItem="3wN-YU-mgf" firstAttribute="bottom" secondItem="Dpj-BA-gqp" secondAttribute="bottom" constant="7" id="Eev-Zu-kBx"/>
+                            <constraint firstItem="WpE-iZ-Gm2" firstAttribute="top" secondItem="mjl-6q-TBd" secondAttribute="top" id="MkM-p2-wym"/>
+                            <constraint firstItem="UXK-5k-IID" firstAttribute="top" secondItem="WpE-iZ-Gm2" secondAttribute="bottom" constant="7" id="PUe-Yc-qbD"/>
+                            <constraint firstItem="Dpj-BA-gqp" firstAttribute="top" secondItem="WpE-iZ-Gm2" secondAttribute="bottom" constant="7" id="VKY-JU-ybh"/>
+                            <constraint firstItem="WpE-iZ-Gm2" firstAttribute="leading" secondItem="3wN-YU-mgf" secondAttribute="leading" id="dBB-rR-mRd"/>
+                            <constraint firstItem="3wN-YU-mgf" firstAttribute="trailing" secondItem="Dpj-BA-gqp" secondAttribute="trailing" constant="9" id="lDy-dA-bhI"/>
+                            <constraint firstItem="Dpj-BA-gqp" firstAttribute="leading" secondItem="UXK-5k-IID" secondAttribute="trailing" constant="8" id="rVu-BC-hku"/>
+                            <constraint firstItem="Dpj-BA-gqp" firstAttribute="leading" secondItem="UXK-5k-IID" secondAttribute="trailing" constant="8" id="whI-xc-L9k"/>
+                            <constraint firstItem="WpE-iZ-Gm2" firstAttribute="trailing" secondItem="3wN-YU-mgf" secondAttribute="trailing" id="ySI-kO-tn5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3wN-YU-mgf"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="7NN-BM-fUQ"/>
+                    <connections>
+                        <outlet property="messageInputField" destination="UXK-5k-IID" id="t62-Rd-4R6"/>
+                        <outlet property="roomTableView" destination="WpE-iZ-Gm2" id="nk5-mq-6Ng"/>
+                        <outlet property="roomTitle" destination="7NN-BM-fUQ" id="skl-fW-y9O"/>
+                        <outlet property="sendButton" destination="Dpj-BA-gqp" id="lG3-GF-5Gf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ogY-lN-YxL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3894" y="328"/>
+            <point key="canvasLocation" x="3893.5999999999999" y="327.88605697151428"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="send_black_24pt" width="24" height="24"/>
+    </resources>
 </document>

@@ -27,6 +27,9 @@ class MyDogCollectionViewController: UICollectionViewController {
     var myArticles : [Article] = []
     var articleImage : [Int:UIImage] = [:]
     var dogInfo : String?
+    var profileImage : UIImage?
+    var backgroundImage : UIImage?
+    var meter : Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +41,8 @@ class MyDogCollectionViewController: UICollectionViewController {
         myDogLayout.itemSize = CGSize(width: width , height: width)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
         isLogin = UserDefaults.standard.bool(forKey: "isLogin")
         dogId = UserDefaults.standard.integer(forKey: "dogId")
         if !isLogin{
@@ -51,12 +55,19 @@ class MyDogCollectionViewController: UICollectionViewController {
         } else if isLogin , dogId != -1{
             getMyDog()
             getMyArticles()
+            getMeter()
             print("showLoginPage 已經登入了 \(dogId)")
             collectionView?.reloadData()
         }
     }
-
+    
     @IBAction func unwindSegue(_ sender: UIStoryboardSegue){}
+    
+    @IBAction func showMyEventButton(_ sender: UIBarButtonItem) {
+        let nextVC = UIStoryboard(name: "MyDogStoryboard", bundle: nil).instantiateViewController(withIdentifier: "Calendar") as! EventViewController
+        nextVC.myDogId = dogId
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
     
     // MARK: UICollectionViewDataSource
 
@@ -73,20 +84,26 @@ class MyDogCollectionViewController: UICollectionViewController {
         
         
         print(dogId)
+        
         if isLogin ,dogId != -1{
             header.setBackgroundImage.addGestureRecognizer(setBackground)
             dogId = UserDefaults.standard.integer(forKey: "dogId")
-            media?.getImage(GET_PROFILE_PHOTO,
-                            header.profileImageView,
-                            Key.dogId.rawValue,
-                            id: dogId, imageSize: 150)
             
-            media?.getImage(GET_PROFILE_BACKGROUND_PHOTO,
-                            header.backgroundImageView,
-                            Key.dogId.rawValue,
-                            id: dogId, imageSize: 150)
-    
+            getImage(status: GET_PROFILE_PHOTO,
+                     key: "dogId", id: dogId,
+                     imageSize: 150,
+                     outsideImageView: header.profileImageView)
+            
+            getImage(status: GET_PROFILE_BACKGROUND_PHOTO,
+                     key: "dogId", id: dogId, imageSize: 150,
+                     outsideImageView: header.backgroundImageView)
+            
             header.infoLabel.text = dogInfo
+            guard let meter = meter else {
+                return header
+            }
+            
+            header.meterLabel.text = "\(String(format: "%.1f", meter)) 公尺"
         }
         return header
     }
@@ -113,6 +130,19 @@ class MyDogCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        let nextVC = UIStoryboard(name: "MyDogStoryboard", bundle: nil).instantiateViewController(withIdentifier: "myArticle") as! MyArticleViewController
+        let article = myArticles[indexPath.row]
+        
+        nextVC.myDog = dog!
+        nextVC.myProfileImage = profileImage
+        nextVC.article = article
+        nextVC.articlImage = articleImage[article.articleId!]
+        
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
     @objc
     func showInfo(){
         let dogId = UserDefaults.standard.integer(forKey: "dogId")
@@ -121,6 +151,10 @@ class MyDogCollectionViewController: UICollectionViewController {
             
             if let controller = storyboard.instantiateViewController(withIdentifier: "Info") as? InfoViewController {
                 
+                controller.dog = dog
+                controller.profileImage = profileImage
+                controller.backgroundImage = backgroundImage
+                controller.lastNavigation = navigationController
                 controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
                 controller.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                 controller.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
@@ -178,7 +212,6 @@ class MyDogCollectionViewController: UICollectionViewController {
                 assertionFailure("get output fail")
                 return
             }
-            print(output.count)
             self.myArticles = output
             
             for article in output {
@@ -207,6 +240,7 @@ class MyDogCollectionViewController: UICollectionViewController {
             guard let output = try? JSONDecoder().decode(Dog.self, from: result) else {
                 return
             }
+            self.dog = output
             guard let name = output.name else {
                 return
             }
@@ -217,6 +251,36 @@ class MyDogCollectionViewController: UICollectionViewController {
         
     }
     
+    func getImage(status:String,
+                  key:String,
+                  id:Int,
+                  imageSize:Int,
+                  outsideImageView:UIImageView){
+        
+        unowned var insideImageView = outsideImageView
+        var data = [String:Any]()
+        data["status"] = status
+        data[key] = id
+        data["imageSize"] = imageSize
+        
+        // 送資料 and 解析回傳的JSON資料
+        communicator.doPost(url: MediaServlet, data: data) { (result) in
+            guard let result = result else {
+                assertionFailure("get data fail")
+                return
+            }
+            
+            guard let image = UIImage.init(data: result) else {
+                return
+            }
+            if status == GET_PROFILE_PHOTO {
+                self.profileImage = image
+            } else {
+                self.backgroundImage = image
+            }
+            insideImageView.image = image
+        }
+    }
     
     func getMyArticleImage(articleId: Int ,mediaId:Int){
         
@@ -239,6 +303,29 @@ class MyDogCollectionViewController: UICollectionViewController {
             self.collectionView?.reloadData()
         }
 
+    }
+    
+    func getMeter(){
+        var data = [String:Any]()
+        data["status"] = GET_METER
+        data["dogId"] = dogId
+        
+        communicator.doPost(url: DogServlet, data: data) { (result) in
+            guard let result = result else {
+                return
+            }
+            print(result)
+            
+            guard let output = try? JSONSerialization.jsonObject(with: result, options: []) as? [String:Double] else {
+                print("cast fail")
+                return
+            }
+            guard let meter = output!["meter"] else {
+                return
+            }
+            self.meter = meter
+            
+        }
     }
     
 }

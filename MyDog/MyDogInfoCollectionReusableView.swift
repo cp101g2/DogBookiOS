@@ -13,5 +13,6 @@ class MyDogInfoCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var meterLabel: UILabel!
     
 }

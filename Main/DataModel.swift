@@ -51,16 +51,27 @@ struct Chat : Codable{
 }
 
 struct Message : Codable{
-    //int id,dogId,articleId;
-    //String content;
-    //Date postingTime;
-    
     var id : Int?
     var dogId : Int?
     var articleId : Int?
     var content : String?
-    
 }
+
+struct Room : Codable {
+    var roomId : Int?
+    var dogOne : Int?
+    var dogTwo : Int?
+}
+
+struct Event : Codable {
+    var eventId : Int?
+    var type : Int?
+    var title : String?
+    var overview : String?
+    var location : String?
+    var date : String?
+}
+
 
 
 

@@ -29,8 +29,9 @@ class ArticleTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         dogId = UserDefaults.standard.integer(forKey: "dogId")
+        tabBarController?.tabBar.isHidden = false
         articles = []
         articleImages = [:]
         authorImages = [:]
@@ -41,12 +42,12 @@ class ArticleTableViewController: UITableViewController {
         getArticles()
     }
     
+    
     @IBAction func openMessageBoard(_ sender: UIButton) {
         print(sender.tag)
         let nextVC = UIStoryboard(name: "ArticleStoryboard", bundle: nil).instantiateViewController(withIdentifier: "messageBoard") as! MessageBoardViewController
         nextVC.articleId = sender.tag
-        let navigation = UINavigationController(rootViewController: nextVC)
-        self.show(navigation, sender: nil)
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     // MARK: - Table view data source
@@ -74,9 +75,11 @@ class ArticleTableViewController: UITableViewController {
         
         cell.tag = articleId
         cell.isLike = isLike
-        
+        cell.likeCount = likes
         if isLike {
             cell.likeImageView.image = UIImage(named: "favorite_black_24pt")
+        } else {
+            cell.likeImageView.image = UIImage(named: "favorite_border_black_24pt")
         }
         
         cell.authorImageView.image = authorImages[authorId]
@@ -107,15 +110,14 @@ class ArticleTableViewController: UITableViewController {
         let height = (cell.articleImageView.image?.size.height)! * r
         
         let imageFrame = CGRect(x: 0, y: 0, width: width, height: height)
-        let labelFrme = CGRect(x: 0, y: 0, width: width - 32, height: textFontSize)
+        let labelFrame = CGRect(x: 0, y: 0, width: width - 32, height: textFontSize)
         
         cell.articleImageView.frame = imageFrame
         cell.authorImageView.frame = CGRect(x: 0, y: 0, width: 50.0, height: 50.0)
-        cell.articleLabel.frame = labelFrme
+        cell.articleLabel.frame = labelFrame
         
         
         cell.likeImageView.addGestureRecognizer(cell.likeTap)
-        cell.isLike = false
         
         
         return cell
@@ -127,6 +129,9 @@ class ArticleTableViewController: UITableViewController {
         }
         return articles.count
     }
+    
+    
+    // MARK :- data remote
 
     
     func getArticles(){
@@ -178,9 +183,10 @@ class ArticleTableViewController: UITableViewController {
             self.authorNames[dogId] = name
             self.getAuthorImage(dogId: dogId)
             if self.articleImages.count == self.articles?.count {
-                print("有哦")
                 self.tableView.reloadData()
-            }        }
+            }
+            
+        }
         
         
     }
@@ -191,6 +197,25 @@ class ArticleTableViewController: UITableViewController {
         data["status"] = GET_PROFILE_PHOTO
         data["dogId"] = dogId
         data["imageSize"] = 50
+        
+        let cacheId = "dogId\(dogId)"
+        // Check if we should use file from cache directly
+        let filename = String(format: "Cache_%ld", cacheId.hashValue)
+        
+        guard let cachesURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {
+            return
+        }
+        let fullFileURL = cachesURL.appendingPathComponent(filename)
+//        print("Caches: \(cachesURL)")
+        
+        if let image = UIImage(contentsOfFile: fullFileURL.path) {
+            // Exist cache file , let's use it and return immediately.
+            self.authorImages[dogId] = image
+            print("有")
+            self.tableView.reloadData()
+            return
+        }
+        
         
         communicator.doPost(url: MediaServlet, data: data) { (result) in
             guard let result = result else {
@@ -204,9 +229,9 @@ class ArticleTableViewController: UITableViewController {
             
             self.authorImages[dogId] = image
             if self.articleImages.count == self.articles?.count {
-                print("有哦")
                 self.tableView.reloadData()
-            }        }
+            }
+        }
         
     }
     
@@ -216,6 +241,25 @@ class ArticleTableViewController: UITableViewController {
         data["status"] = GET_ARTICLES
         data["mediaId"] = mediaId
         data["imageSize"] = UIScreen.main.nativeBounds.width
+        
+        let cacheId = "Article\(mediaId)"
+        // Check if we should use file from cache directly
+        let filename = String(format: "Cache_%ld", cacheId.hashValue)
+        
+        guard let cachesURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else {
+            return
+        }
+        let fullFileURL = cachesURL.appendingPathComponent(filename)
+//        print("Caches: \(cachesURL)")
+        
+        if let image = UIImage(contentsOfFile: fullFileURL.path) {
+            // Exist cache file , let's use it and return immediately.
+            self.articleImages[articleId] = image
+            self.tableView.reloadData()
+            return
+        }
+        
+        
         // 送資料 and 解析回傳的JSON資料
         communicator.doPost(url: MediaServlet, data: data) { (result) in
             guard let result = result else {
@@ -228,13 +272,12 @@ class ArticleTableViewController: UITableViewController {
             }
             
             self.articleImages[articleId] = image
-            print(self.articleImages.count)
+//            print(self.articleImages.count)
             if self.articleImages.count == self.articles?.count {
-                print("有哦")
+                
                 self.tableView.reloadData()
             }
         }
-        
     }
     
     func getLikeCount(articleId: Int){
@@ -278,7 +321,6 @@ class ArticleTableViewController: UITableViewController {
             let isLike = output!["isLike"]
             self.isLike[articleId] = isLike
             if self.articleImages.count == self.articles?.count {
-                print("有哦")
                 self.tableView.reloadData()
             }
         }
