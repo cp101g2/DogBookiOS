@@ -52,6 +52,10 @@
 		DED676B32116E0A200A5B2A6 /* MyArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED676B22116E0A200A5B2A6 /* MyArticleViewController.swift */; };
 		DED676B52116E0F900A5B2A6 /* MyArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED676B42116E0F900A5B2A6 /* MyArticleTableViewCell.swift */; };
 		DED676B72116E10900A5B2A6 /* ArticleMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED676B62116E10900A5B2A6 /* ArticleMessageTableViewCell.swift */; };
+		DED676B92118044300A5B2A6 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED676B82118044300A5B2A6 /* EventViewController.swift */; };
+		DED676BB211819AF00A5B2A6 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED676BA211819AF00A5B2A6 /* EventTableViewCell.swift */; };
+		DED676BD2118270500A5B2A6 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED676BC2118270500A5B2A6 /* AddEventViewController.swift */; };
+		DED676BF21183EEA00A5B2A6 /* WalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED676BE21183EEA00A5B2A6 /* WalkViewController.swift */; };
 		DED8DF5D2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED8DF5C2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift */; };
 		DEEAA714210728980010B0BE /* FriendStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEEAA713210728980010B0BE /* FriendStoryboard.storyboard */; };
 		DEEAA71621084DEE0010B0BE /* ArticleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEAA71521084DEE0010B0BE /* ArticleTableViewController.swift */; };
@@ -112,6 +116,10 @@
 		DED676B22116E0A200A5B2A6 /* MyArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyArticleViewController.swift; sourceTree = "<group>"; };
 		DED676B42116E0F900A5B2A6 /* MyArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyArticleTableViewCell.swift; sourceTree = "<group>"; };
 		DED676B62116E10900A5B2A6 /* ArticleMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleMessageTableViewCell.swift; sourceTree = "<group>"; };
+		DED676B82118044300A5B2A6 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		DED676BA211819AF00A5B2A6 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		DED676BC2118270500A5B2A6 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
+		DED676BE21183EEA00A5B2A6 /* WalkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkViewController.swift; sourceTree = "<group>"; };
 		DED8DF5C2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDogInfoCollectionReusableView.swift; sourceTree = "<group>"; };
 		DEEAA713210728980010B0BE /* FriendStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendStoryboard.storyboard; sourceTree = "<group>"; };
 		DEEAA71521084DEE0010B0BE /* ArticleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +194,10 @@
 				DED676B22116E0A200A5B2A6 /* MyArticleViewController.swift */,
 				DED676B42116E0F900A5B2A6 /* MyArticleTableViewCell.swift */,
 				DED676B62116E10900A5B2A6 /* ArticleMessageTableViewCell.swift */,
+				DED676B82118044300A5B2A6 /* EventViewController.swift */,
+				DED676BA211819AF00A5B2A6 /* EventTableViewCell.swift */,
+				DED676BC2118270500A5B2A6 /* AddEventViewController.swift */,
+				DED676BE21183EEA00A5B2A6 /* WalkViewController.swift */,
 			);
 			path = MyDog;
 			sourceTree = "<group>";
@@ -322,6 +334,11 @@
 				TargetAttributes = {
 					DE6D4F5120EF3695003ECCC6 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -416,11 +433,13 @@
 				DE60811520FDA06700FA16C1 /* LoginViewController.swift in Sources */,
 				18FD863F210711D70040441F /* FriendSearchTableViewCell.swift in Sources */,
 				DE1B94F72112D43B0049197A /* ChatView.swift in Sources */,
+				DED676B92118044300A5B2A6 /* EventViewController.swift in Sources */,
 				DE60810B20FD9D7600FA16C1 /* Communicator.swift in Sources */,
 				DEFE3885211183FB00DAE4F0 /* ChatFriendTableViewController.swift in Sources */,
 				DED676B72116E10900A5B2A6 /* ArticleMessageTableViewCell.swift in Sources */,
 				DE60811320FD9EC900FA16C1 /* Default.swift in Sources */,
 				DE16CCAE210B07A4008FF04F /* UIImage+resize.swift in Sources */,
+				DED676BF21183EEA00A5B2A6 /* WalkViewController.swift in Sources */,
 				DE60811920FDC79400FA16C1 /* MyDogCollectionViewController.swift in Sources */,
 				DE16CCDA210D99DC008FF04F /* MessageBoardViewController.swift in Sources */,
 				DE4DD08D210322FE00DE8587 /* UIImageCropper.swift in Sources */,
@@ -435,6 +454,7 @@
 				188B35B32107591000458C80 /* PairViewController.swift in Sources */,
 				18FD863D210711BA0040441F /* FriendSearchViewController.swift in Sources */,
 				DE4DD09221042C1E00DE8587 /* SignUpViewController.swift in Sources */,
+				DED676BD2118270500A5B2A6 /* AddEventViewController.swift in Sources */,
 				DE16CCB6210D7288008FF04F /* MessageBoardTableViewCell.swift in Sources */,
 				DE6D4F5820EF3695003ECCC6 /* ViewController.swift in Sources */,
 				DE4DD09021034E2500DE8587 /* InfoViewController.swift in Sources */,
@@ -449,6 +469,7 @@
 				DE4DD0A52105ACD800DE8587 /* AddDogViewController.swift in Sources */,
 				DED676B32116E0A200A5B2A6 /* MyArticleViewController.swift in Sources */,
 				DE60811D20FDC94D00FA16C1 /* MyDogImageCollectionViewCell.swift in Sources */,
+				DED676BB211819AF00A5B2A6 /* EventTableViewCell.swift in Sources */,
 				DEFE388921119E6500DAE4F0 /* ChatRoomViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

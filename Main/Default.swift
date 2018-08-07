@@ -15,6 +15,7 @@ let ChatServlet = HOST_URL + "ChatServlet"
 let MediaServlet = HOST_URL + "MediaServlet"
 let ArticleServlet = HOST_URL + "ArticleServlet"
 let FriendServlet = HOST_URL + "FriendServlet"  //Jimmy
+let CalendarServlet = HOST_URL + "CalendarServlet"  
 let SocketUrl = "ws://127.0.0.1:8080/DogBookServlet/ChatWebSocketServer/"
 
 let SIGN_IN = "signIn"

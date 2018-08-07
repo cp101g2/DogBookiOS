@@ -47,7 +47,6 @@ class ArticleTableViewController: UITableViewController {
         print(sender.tag)
         let nextVC = UIStoryboard(name: "ArticleStoryboard", bundle: nil).instantiateViewController(withIdentifier: "messageBoard") as! MessageBoardViewController
         nextVC.articleId = sender.tag
-        print("這這",self.navigationController)
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     

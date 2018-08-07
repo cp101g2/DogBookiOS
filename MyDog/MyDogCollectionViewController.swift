@@ -63,6 +63,12 @@ class MyDogCollectionViewController: UICollectionViewController {
     
     @IBAction func unwindSegue(_ sender: UIStoryboardSegue){}
     
+    @IBAction func showMyEventButton(_ sender: UIBarButtonItem) {
+        let nextVC = UIStoryboard(name: "MyDogStoryboard", bundle: nil).instantiateViewController(withIdentifier: "Calendar") as! EventViewController
+        nextVC.myDogId = dogId
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -148,7 +154,7 @@ class MyDogCollectionViewController: UICollectionViewController {
                 controller.dog = dog
                 controller.profileImage = profileImage
                 controller.backgroundImage = backgroundImage
- 
+                controller.lastNavigation = navigationController
                 controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
                 controller.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                 controller.modalTransitionStyle = UIModalTransitionStyle.crossDissolve

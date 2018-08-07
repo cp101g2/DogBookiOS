@@ -120,7 +120,7 @@
         <scene sceneID="33N-0L-dQ6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Cf7-8B-hk6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="好友" id="vsd-ii-3Bs"/>
+                    <tabBarItem key="tabBarItem" title="好友" image="people_black" selectedImage="people_black" id="vsd-ii-3Bs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1yK-Bh-mHV">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -149,6 +149,7 @@
     <resources>
         <image name="chat_black" width="24" height="24"/>
         <image name="dashboard_black" width="24" height="24"/>
+        <image name="people_black" width="24" height="24"/>
         <image name="pets_black_24pt" width="24" height="24"/>
     </resources>
 </document>

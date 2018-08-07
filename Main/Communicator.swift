@@ -117,7 +117,7 @@ class Communicator {
         let task = URLSession.shared.uploadTask(with: request, from: requestJson) { (output, response, error) in
             
             if let error = error {
-                assertionFailure("error :\(error)")
+//                assertionFailure("error :\(error)")
                 return
             }
             // 確認server回應狀況

@@ -24,6 +24,7 @@ class InfoViewController: UIViewController {
     private let cropper = UIImageCropper(cropRatio: 1/1)
     
     let communicator = Communicator()
+    var lastNavigation : UINavigationController!
     var media : Media?
     var dog : Dog?
     var profileImage : UIImage!
@@ -47,7 +48,7 @@ class InfoViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        tabBarController?.tabBar.isHidden = true
         profileImageView.image = profileImage
         backgroundImageView.image = backgroundImage
         guard let dog = dog else {
@@ -82,7 +83,10 @@ class InfoViewController: UIViewController {
     
     @objc
     func walkOut(){
-        print("this is walk out. ")
+        let nextVC = UIStoryboard(name: "MyDogStoryboard", bundle: nil).instantiateViewController(withIdentifier: "Walk") as! WalkViewController
+        nextVC.myDogId = UserDefaults.standard.integer(forKey: "dogId")
+        lastNavigation.pushViewController(nextVC, animated: true)
+        dismiss(animated: false)
     }
     
     @objc

@@ -63,8 +63,14 @@ struct Room : Codable {
     var dogTwo : Int?
 }
 
-
-
+struct Event : Codable {
+    var eventId : Int?
+    var type : Int?
+    var title : String?
+    var overview : String?
+    var location : String?
+    var date : String?
+}
 
 
 
