@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Friend Page Switch View Controller-->
+        <!--好友-->
         <scene sceneID="F8q-YZ-q7l">
             <objects>
                 <viewController storyboardIdentifier="Friend" id="BIy-II-l0l" customClass="FriendPageSwitchViewController" customModule="DogBook" customModuleProvider="target" sceneMemberID="viewController">
@@ -47,6 +47,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4lA-Pw-rRy"/>
                     </view>
+                    <navigationItem key="navigationItem" title="好友" id="d0f-Th-ceT"/>
                     <connections>
                         <outlet property="friendView" destination="sqH-ml-iLK" id="Nv3-yb-xpr"/>
                         <outlet property="switchPageControl" destination="4lz-7S-F75" id="x4R-6m-iCL"/>
@@ -54,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WKh-my-IQO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-180" y="253.2233883058471"/>
+            <point key="canvasLocation" x="759.20000000000005" y="253.2233883058471"/>
         </scene>
         <!--Friend Search View Controller-->
         <scene sceneID="Dba-fJ-e9n">
@@ -141,6 +142,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="a2d-jz-tig"/>
                     </view>
+                    <navigationItem key="navigationItem" id="15o-vu-erw"/>
                     <connections>
                         <outlet property="nameSearchBar" destination="c3k-ba-TQk" id="P8H-6u-R3Z"/>
                         <outlet property="tableView" destination="ihk-wP-Vtu" id="0iN-vg-DbN"/>
@@ -148,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTA-eJ-H6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1365.5999999999999" y="223.53823088455775"/>
+            <point key="canvasLocation" x="3244" y="223.53823088455775"/>
         </scene>
         <!--Add List Table View Controller-->
         <scene sceneID="EPH-7m-GaR">
@@ -174,7 +176,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idn-bg-GYr">
-                                            <rect key="frame" x="120" y="34" width="44" height="21"/>
+                                            <rect key="frame" x="120" y="34" width="60" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
@@ -266,24 +268,42 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3q-eA-wsH">
-                                <rect key="frame" x="238" y="337" width="130" height="130"/>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q7N-LO-rkp">
+                                <rect key="frame" x="9" y="337" width="124" height="124"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
-                                <state key="normal" title="NEXT" backgroundImage="paw_print-512.png">
-                                    <color key="titleColor" red="0.59215686270000001" green="0.4823529412" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="byn:" destination="IQZ-QL-SLS" eventType="touchUpInside" id="ewG-gt-tKG"/>
-                                </connections>
-                            </button>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="62"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ACj-yy-ORp">
+                                <rect key="frame" x="240" y="338" width="124" height="124"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="62"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lww-te-M1v">
                                 <rect key="frame" x="16" y="345" width="110" height="110"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
-                                <state key="normal" title="LIKE" backgroundImage="08_heart-2-512.png">
-                                    <color key="titleColor" red="0.59215686270000001" green="0.4823529412" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" backgroundImage="配對yes.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="55"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="sendInviteBtnPressed:" destination="IQZ-QL-SLS" eventType="touchUpInside" id="Yjw-2N-3wG"/>
                                 </connections>
@@ -302,30 +322,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q7N-LO-rkp">
-                                <rect key="frame" x="9" y="337" width="124" height="124"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3q-eA-wsH">
+                                <rect key="frame" x="247" y="345" width="110" height="110"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <state key="normal" backgroundImage="配對no.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="62"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="2"/>
+                                        <integer key="value" value="55"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ACj-yy-ORp">
-                                <rect key="frame" x="241" y="340" width="124" height="124"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="62"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
+                                <connections>
+                                    <action selector="byn:" destination="IQZ-QL-SLS" eventType="touchUpInside" id="ewG-gt-tKG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="lxF-wE-5k4"/>
@@ -342,7 +354,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUA-5u-now" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1365.5999999999999" y="1088.9055472263869"/>
+            <point key="canvasLocation" x="2868" y="1107"/>
         </scene>
         <!--Friend List View Controller-->
         <scene sceneID="OjY-f2-5Lh">
@@ -421,6 +433,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="CY3-8k-CJa"/>
                     </view>
+                    <navigationItem key="navigationItem" id="6wk-Dy-Cq8"/>
                     <connections>
                         <outlet property="nameSearchBar" destination="jbn-Ej-L7X" id="dRJ-Eg-bZU"/>
                         <outlet property="tableView" destination="MJ9-CI-Ri2" id="dwa-rF-a4r"/>
@@ -428,15 +441,108 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRG-1u-g36" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1365.5999999999999" y="-537.48125937031489"/>
+            <point key="canvasLocation" x="3244" y="-537.48125937031489"/>
+        </scene>
+        <!--Friend主頁-->
+        <scene sceneID="Z5L-0l-q3O">
+            <objects>
+                <collectionViewController storyboardIdentifier="FriendInfo" id="Thg-d4-wZV" userLabel="Friend主頁" customClass="FriendCollectionViewController" customModule="DogBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="NnF-lc-aGP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DES-Bg-dAK" userLabel="Friend Layout">
+                            <size key="itemSize" width="94" height="104"/>
+                            <size key="headerReferenceSize" width="50" height="309"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="pu1-SU-Xyl" customClass="FriendCollectionViewCell" customModule="DogBook" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="309" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Ax-Oi-44l">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="5Ax-Oi-44l" firstAttribute="top" secondItem="pu1-SU-Xyl" secondAttribute="top" id="2ZX-Bb-kSn"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Ax-Oi-44l" secondAttribute="trailing" id="3ge-o3-fQh"/>
+                                    <constraint firstAttribute="bottom" secondItem="5Ax-Oi-44l" secondAttribute="bottom" id="feM-ac-9oU"/>
+                                    <constraint firstItem="5Ax-Oi-44l" firstAttribute="leading" secondItem="pu1-SU-Xyl" secondAttribute="leading" id="vrn-0l-XuS"/>
+                                </constraints>
+                                <size key="customSize" width="100" height="100"/>
+                                <connections>
+                                    <outlet property="photoImageView" destination="5Ax-Oi-44l" id="iAO-WM-vOS"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Header" id="ovh-7P-f7c" customClass="FriendCollectionReusableView" customModule="DogBook" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="309"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uk6-xK-WVy">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <gestureRecognizers/>
+                                </imageView>
+                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1lx-Yb-tRG">
+                                    <rect key="frame" x="112" y="94" width="150" height="150"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" red="0.99220389129999997" green="0.59662383789999995" blue="0.018479224289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <gestureRecognizers/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="75"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="Mzn-zn-FnR" appends="YES" id="B0e-9b-q9K"/>
+                                    </connections>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rM8-WP-CMw">
+                                    <rect key="frame" x="119" y="252" width="137" height="57"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <connections>
+                                <outlet property="friendBackgroundImageView" destination="Uk6-xK-WVy" id="R3T-hR-IpI"/>
+                                <outlet property="friendInfoLabel" destination="rM8-WP-CMw" id="5jf-Cb-byE"/>
+                                <outlet property="friendProfileImageView" destination="1lx-Yb-tRG" id="qD5-39-4XS"/>
+                            </connections>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="Thg-d4-wZV" id="kD0-6l-tR9"/>
+                            <outlet property="delegate" destination="Thg-d4-wZV" id="CfR-ys-QNM"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="我的狗" id="9et-YD-ktZ"/>
+                    <connections>
+                        <outlet property="FriendCollectionView" destination="NnF-lc-aGP" id="sxo-X4-Syd"/>
+                        <outlet property="friendLayout" destination="DES-Bg-dAK" id="ulM-uN-cqk"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lYk-qM-m4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Mzn-zn-FnR" userLabel="profilePressed"/>
+            </objects>
+            <point key="canvasLocation" x="4100" y="-537"/>
         </scene>
     </scenes>
     <resources>
-        <image name="08_heart-2-512.png" width="512" height="512"/>
         <image name="1" width="1440" height="1280"/>
         <image name="2" width="210" height="266"/>
         <image name="4" width="1025" height="601"/>
         <image name="pairBackground.jpg" width="462" height="768"/>
-        <image name="paw_print-512.png" width="512" height="512"/>
+        <image name="配對no.png" width="780" height="776"/>
+        <image name="配對yes.png" width="786" height="820"/>
     </resources>
 </document>

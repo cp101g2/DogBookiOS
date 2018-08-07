@@ -75,7 +75,7 @@ class PairViewController: UIViewController {
     //找下一個陌生人
     @IBAction func byn(_ sender: Any) {
         likeButton.isUserInteractionEnabled = true
-        likeButton.setTitle("LIKE", for: .normal)
+//        likeButton.setTitle("LIKE", for: .normal)
         likeButton.alpha = 1.0
         random()
     }
@@ -88,9 +88,9 @@ class PairViewController: UIViewController {
         
         likeButton.isUserInteractionEnabled = false
         //        likeButton.tintColor = UIColor.gray
-        likeButton.alpha = 0.6
+        likeButton.alpha = 0.4
         //      likeButton.titleLabel?.font.withSize(2.0)
-        likeButton.setTitle("已送出", for: .normal)
+//        likeButton.setTitle("已送出", for: .normal)
         
         sendInvite()
     }

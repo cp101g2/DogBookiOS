@@ -70,6 +70,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1rB-tb-b3m">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="IuC-9Q-84e" kind="relationship" relationship="rootViewController" id="WIP-Wi-j0a"/>
                     </connections>
@@ -95,7 +98,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oBa-Wy-DNk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2429.5999999999999" y="118.29085457271366"/>
+            <point key="canvasLocation" x="2518" y="180"/>
         </scene>
         <!--文章-->
         <scene sceneID="WXx-iw-iPt">
@@ -120,7 +123,7 @@
         <scene sceneID="33N-0L-dQ6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Cf7-8B-hk6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="好友" id="vsd-ii-3Bs"/>
+                    <tabBarItem key="tabBarItem" title="好友" image="people_black" landscapeImage="people_black" id="vsd-ii-3Bs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1yK-Bh-mHV">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -128,18 +131,18 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="7RC-Mx-L4p" kind="relationship" relationship="rootViewController" id="5X4-8R-wy1"/>
+                        <segue destination="7RC-Mx-L4p" kind="relationship" relationship="rootViewController" id="S7P-qg-Ki7"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mdo-yH-fGj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2462" y="1633"/>
+            <point key="canvasLocation" x="1862" y="1661"/>
         </scene>
         <!--Friend-->
         <scene sceneID="Zea-9F-Xqf">
             <objects>
                 <viewControllerPlaceholder storyboardName="FriendStoryboard" referencedIdentifier="Friend" id="7RC-Mx-L4p" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ABi-pd-47t"/>
+                    <navigationItem key="navigationItem" id="ABi-pd-47t" userLabel="好友"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMT-qt-LDC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -149,5 +152,6 @@
     <resources>
         <image name="chat_black" width="24" height="24"/>
         <image name="dashboard_black" width="24" height="24"/>
+        <image name="people_black" width="24" height="24"/>
     </resources>
 </document>
