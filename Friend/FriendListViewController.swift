@@ -8,13 +8,15 @@
 
 import UIKit
 
+var friendIdForMainPage = -1
+
 class FriendListViewController: UIViewController,  UITableViewDelegate, UISearchBarDelegate, UITableViewDataSource {
     
     let communicator = Communicator()
     
     var friendId : [Int] = []
     
-    
+    var myNavigation: UINavigationController!
     
     var friendInfoDictionary = [Int:Dog]()
     var currentFriendInfoDictionary = [Int:Dog]()
@@ -26,6 +28,7 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("reload")
         NotificationCenter.default.addObserver(self, selector: #selector(reloadList), name: NSNotification.Name(rawValue: "load"), object: nil)
         
         tableView.reloadData()
@@ -38,6 +41,8 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
         
         // Do any additional setup after loading the view.
     }
+    
+    
     
     //加了好友後刷新
     @objc
@@ -64,6 +69,34 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
         
         return currentFriendInfoDictionary.count
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        print("click")
+        
+//        let storyboard = UIStoryboard(name: "MyDogStoryboard", bundle: Bundle.main)
+//        let destination = storyboard.instantiateViewController(withIdentifier: "MyDog") as! YourViewController
+//        navigationController?.pushViewController(destination, animated: true)
+        // Get Cell Label
+//        let indexPath = tableView.indexPathForSelectedRow
+//        let currentCell = tableView.cellForRow(at: indexPath!) as UITableViewCell!
+        
+        
+        let storyboard = UIStoryboard(name: "FriendStoryboard", bundle: nil)
+        var viewController = storyboard.instantiateViewController(withIdentifier: "FriendInfo") as! FriendCollectionViewController
+        
+        
+//        print(navigationController)
+        myNavigation.pushViewController(viewController, animated: true)
+//
+        let friendId = self.friendId[indexPath.row]
+        friendIdForMainPage = friendId
+//        viewController.passedValue = currentCell.textLabel.text
+//        self.present(viewController, animated: true , completion: nil)
+        
+    }
+    
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -13,7 +13,7 @@ class FriendPageSwitchViewController: UIViewController {
     @IBOutlet weak var switchPageControl: UISegmentedControl!
     @IBOutlet weak var friendView: UIView!
     
-    let friendListVC = UIStoryboard(name: "FriendStoryboard", bundle: nil).instantiateViewController(withIdentifier: "sbFriendList")
+    let friendListVC = UIStoryboard(name: "FriendStoryboard", bundle: nil).instantiateViewController(withIdentifier: "sbFriendList") as! FriendListViewController
     let searchVC = UIStoryboard(name: "FriendStoryboard", bundle: nil).instantiateViewController(withIdentifier: "sbSearch")
     let pairVC = UIStoryboard(name: "FriendStoryboard", bundle: nil).instantiateViewController(withIdentifier: "sbPair")
     let addListVC = UIStoryboard(name: "FriendStoryboard", bundle: nil).instantiateViewController(withIdentifier: "sbAddList")
@@ -27,7 +27,7 @@ class FriendPageSwitchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        friendListVC.myNavigation = self.navigationController
         friendView.addSubview(friendListVC.view)
         
         switchPageControl.selectedSegmentIndex = 0
@@ -52,12 +52,22 @@ class FriendPageSwitchViewController: UIViewController {
     }
     */
     
+    @IBAction func test(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "FriendStoryboard", bundle: Bundle.main)
+        let destination = storyboard.instantiateViewController(withIdentifier: "sbPair") as! PairViewController
+        navigationController?.pushViewController(destination, animated: true)
+    }
+    
+    
+    
     @IBAction func selectValueChanged(_ sender: UISegmentedControl) {
         
         switch switchPageControl.selectedSegmentIndex {
         case 0:
-         
+            friendListVC.myNavigation = self.navigationController
             self.friendView.addSubview(friendListVC.view)
+            
         case 1:
        
             friendView.addSubview(searchVC.view)
