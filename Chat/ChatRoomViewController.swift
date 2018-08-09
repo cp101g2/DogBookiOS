@@ -119,8 +119,10 @@ class ChatRoomViewController: UIViewController {
             UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                 self.view.layoutIfNeeded()
             }) { (completed) in
-                let indexPath = IndexPath(item: self.chats.count-1, section: 0)
-                self.roomTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                if self.chats.count-1 > 0 {
+                    let indexPath = IndexPath(item: self.chats.count-1, section: 0)
+                    self.roomTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                }
             }
             
         }
