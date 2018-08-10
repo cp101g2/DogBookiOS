@@ -29,7 +29,7 @@ class FriendPageSwitchViewController: UIViewController {
         super.viewWillAppear(animated)
         friendListVC.myNavigation = self.navigationController
         friendView.addSubview(friendListVC.view)
-        
+        tabBarController?.tabBar.isHidden = false
         switchPageControl.selectedSegmentIndex = 0
         switchPageControl.isHidden = false
         
