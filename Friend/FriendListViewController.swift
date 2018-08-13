@@ -17,6 +17,7 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
     var friendId : [Int] = []
     
     var myNavigation: UINavigationController!
+  
     
     var friendInfoDictionary = [Int:Dog]()
     var currentFriendInfoDictionary = [Int:Dog]()
@@ -57,12 +58,17 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,9 +95,11 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
         
 //        print(navigationController)
         myNavigation.pushViewController(viewController, animated: true)
+//        myTabBar.tabBar.isHidden = true
 //
         let friendId = self.friendId[indexPath.row]
         friendIdForMainPage = friendId
+         self.view.endEditing(true)
 //        viewController.passedValue = currentCell.textLabel.text
 //        self.present(viewController, animated: true , completion: nil)
         
@@ -131,11 +139,10 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
         return cell
     }
     
-    
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return nameSearchBar
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UITableViewAutomaticDimension
     }

@@ -40,6 +40,7 @@ class PairViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         //         NotificationCenter.default.addObserver(self, selector: #selector(reloadList), name: NSNotification.Name(rawValue: "load"), object: nil)
         backgroundView.layer.borderWidth = 2
         backgroundView.layer.cornerRadius = 10
@@ -51,6 +52,7 @@ class PairViewController: UIViewController {
         
         
     }
+    
     
     
     //    //加了好友後刷新

@@ -50,6 +50,7 @@ class FriendCollectionViewController: UICollectionViewController {
     
     override func viewDidAppear(_ animated: Bool) {
 //        isLogin = UserDefaults.standard.bool(forKey: "isLogin")
+        tabBarController?.tabBar.isHidden = true
         dogId = friendIdForMainPage
         if dogId != -1{
             getMyDog()
