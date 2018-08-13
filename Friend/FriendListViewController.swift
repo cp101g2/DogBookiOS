@@ -72,9 +72,10 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+    
         return currentFriendInfoDictionary.count
     }
+    
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -206,15 +207,17 @@ class FriendListViewController: UIViewController,  UITableViewDelegate, UISearch
         }
         // 送資料 and 解析回傳的JSON資料
         communicator.doPost(url: FriendServlet, data: uploadData) { (result) in
-            
+            print("解析前\(result)")
             guard let result = result else {
                 assertionFailure("get data fail")
                 return
             }
+          print(  "\(String(describing: String(data: result, encoding: .utf8)))")
             guard let output = try? JSONDecoder().decode([GetMyFriendList].self, from: result) else {
                 assertionFailure("get output fail")
                 return
             }
+             print("解析完\(output)")
             for friendId in output {
                 
                 self.getFriendInfo(dogId: friendId.dogId)

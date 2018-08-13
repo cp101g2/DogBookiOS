@@ -17,6 +17,8 @@
 		1878FB3B210AB98E00715BB0 /* AddListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878FB3A210AB98E00715BB0 /* AddListTableViewController.swift */; };
 		1878FB3F210AD0BC00715BB0 /* AddListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878FB3E210AD0BC00715BB0 /* AddListTableViewCell.swift */; };
 		188B35B32107591000458C80 /* PairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B35B22107591000458C80 /* PairViewController.swift */; };
+		18A2C5A8211F3C600015935D /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A2C5A7211F3C600015935D /* File.swift */; };
+		18ABCFB721213B5F0010568E /* questions-to-ask.png in Resources */ = {isa = PBXBuildFile; fileRef = 18ABCFB621213B5F0010568E /* questions-to-ask.png */; };
 		18DDB440211980BD00CEA7BA /* FriendCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDB43F211980BD00CEA7BA /* FriendCollectionViewController.swift */; };
 		18DDB4422119814200CEA7BA /* FriendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDB4412119814200CEA7BA /* FriendCollectionViewCell.swift */; };
 		18DDB4442119844400CEA7BA /* FriendCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDB4432119844400CEA7BA /* FriendCollectionReusableView.swift */; };
@@ -83,6 +85,8 @@
 		1878FB3A210AB98E00715BB0 /* AddListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListTableViewController.swift; sourceTree = "<group>"; };
 		1878FB3E210AD0BC00715BB0 /* AddListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListTableViewCell.swift; sourceTree = "<group>"; };
 		188B35B22107591000458C80 /* PairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairViewController.swift; sourceTree = "<group>"; };
+		18A2C5A7211F3C600015935D /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		18ABCFB621213B5F0010568E /* questions-to-ask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "questions-to-ask.png"; sourceTree = "<group>"; };
 		18DDB43F211980BD00CEA7BA /* FriendCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCollectionViewController.swift; sourceTree = "<group>"; };
 		18DDB4412119814200CEA7BA /* FriendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCollectionViewCell.swift; sourceTree = "<group>"; };
 		18DDB4432119844400CEA7BA /* FriendCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -168,7 +172,9 @@
 				18DDB4412119814200CEA7BA /* FriendCollectionViewCell.swift */,
 				1878FB3E210AD0BC00715BB0 /* AddListTableViewCell.swift */,
 				188B35B22107591000458C80 /* PairViewController.swift */,
+				18A2C5A7211F3C600015935D /* File.swift */,
 				183482F32115863E00795C2F /* paw_print-512.png */,
+				18ABCFB621213B5F0010568E /* questions-to-ask.png */,
 				183482F12115863300795C2F /* 08_heart-2-512.png */,
 				183562242110360600489685 /* pairBackground.jpg */,
 				185BB2FF21175CFC00956EF6 /* 配對yes.png */,
@@ -392,6 +398,7 @@
 				185BB30121175CFC00956EF6 /* 配對yes.png in Resources */,
 				183561E9210FF7AA00489685 /* female.png in Resources */,
 				DE6D4F5D20EF3696003ECCC6 /* Assets.xcassets in Resources */,
+				18ABCFB721213B5F0010568E /* questions-to-ask.png in Resources */,
 				DE6D4F5B20EF3695003ECCC6 /* Main.storyboard in Resources */,
 				185BB30021175CFC00956EF6 /* 配對no.png in Resources */,
 				DE4DD09B2105A1AF00DE8587 /* MyDogStoryboard.storyboard in Resources */,
@@ -467,6 +474,7 @@
 				DE16CCAC210B0455008FF04F /* ArticleTableViewCell.swift in Sources */,
 				DE4DD08E210322FE00DE8587 /* UIImage+FixOrientation.swift in Sources */,
 				18FD863B2106FD110040441F /* FriendListTableViewCell.swift in Sources */,
+				18A2C5A8211F3C600015935D /* File.swift in Sources */,
 				DEFE38872111841300DAE4F0 /* ChatFriendTableViewCell.swift in Sources */,
 				DED8DF5D2101BFEA00673EA5 /* MyDogInfoCollectionReusableView.swift in Sources */,
 				188B35B32107591000458C80 /* PairViewController.swift in Sources */,
