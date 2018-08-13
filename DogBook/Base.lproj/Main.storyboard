@@ -16,7 +16,6 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4rg-di-yaT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="o0z-hf-LDb" kind="relationship" relationship="viewControllers" id="OTE-J7-2Ja"/>
@@ -47,7 +46,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h76-1m-bUd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3368.8000000000002" y="118.74062968515743"/>
+            <point key="canvasLocation" x="3180" y="178"/>
         </scene>
         <!--Article-->
         <scene sceneID="al4-6D-HU4">
@@ -98,7 +97,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oBa-Wy-DNk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2518" y="180"/>
+            <point key="canvasLocation" x="2430" y="179"/>
         </scene>
         <!--文章-->
         <scene sceneID="WXx-iw-iPt">
@@ -136,7 +135,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mdo-yH-fGj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1862" y="1661"/>
+            <point key="canvasLocation" x="2430" y="1640"/>
         </scene>
         <!--Friend-->
         <scene sceneID="Zea-9F-Xqf">
@@ -153,5 +152,6 @@
         <image name="chat_black" width="24" height="24"/>
         <image name="dashboard_black" width="24" height="24"/>
         <image name="people_black" width="24" height="24"/>
+        <image name="pets_black_24pt" width="24" height="24"/>
     </resources>
 </document>
