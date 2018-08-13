@@ -26,7 +26,6 @@ class AddArticleViewController: UIViewController {
     }
     
     @IBAction func chooseImageButton(_ sender: UIButton) {
-        print("hello")
         setImage()
     }
     @IBAction func createArticle(_ sender: UIBarButtonItem) {
@@ -88,7 +87,7 @@ class AddArticleViewController: UIViewController {
             self.present(self.picker, animated: true, completion: nil)
         }
         let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        controller.addAction(takePicAction)
+//        controller.addAction(takePicAction)
         controller.addAction(pickPicAction)
         controller.addAction(cancelAction)
         self.present(controller, animated: true, completion: nil)
